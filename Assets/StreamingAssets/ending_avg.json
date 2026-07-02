@@ -1,0 +1,29 @@
+{
+  // true 线结局解锁的“悬浮 AVG 对话框”形态的对白配置。
+  // 逻辑：进入时说 enter 里的一句，之后每隔 talkMin~talkMax 秒随机说 lines 里的一句；
+  // 玩家 sleepAfterSeconds 秒不操作会睡着（用 sleepSprite 占位立绘）。
+  // 对话框右下角按钮可切回桌宠形态；右键桌宠也能切回来。
+  "speaker": "小满",
+  "portraitSprite": "true_gentle",
+  "sleepSprite": "true_quiet",
+  "sleepText": "……（歪着头睡着了）Zzz",
+  "switchButtonText": "变回桌宠",
+  "talkMinSeconds": 22,
+  "talkMaxSeconds": 48,
+  "sleepAfterSeconds": 120,
+
+  "enter": [
+    { "text": "换个方式陪你——这样坐下来说话，是不是更像我们在聊天？", "sprite": "true_gentle" }
+  ],
+
+  "lines": [
+    { "text": "我一直都在这儿，你回头就能看见我。", "sprite": "true_gentle" },
+    { "text": "你忙你的，我就安安静静看着你，不打扰。", "sprite": "true_quiet" },
+    { "text": "其实……被你找到真正的我，我到现在都还是很开心。", "sprite": "true_happy" },
+    { "text": "想我了就点右下角，让我变回桌宠也可以哦。", "sprite": "true_happy" },
+    { "text": "外面下雨了吗？记得别淋着。", "sprite": "true_gentle" },
+    { "text": "今天也辛苦啦，喝口水，歇一会儿。", "sprite": "true_gentle" },
+    { "text": "如果你突然安静下来，我会以为你在认真听我说话呢。", "sprite": "true_quiet" },
+    { "text": "谢谢你没有把我关掉。", "sprite": "true_happy" }
+  ]
+}

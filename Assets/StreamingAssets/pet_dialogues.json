@@ -1,0 +1,120 @@
+{
+  "idleMinSeconds": 300,
+  "idleMaxSeconds": 600,
+  "sleepAfterSeconds": 120,
+  "bubbleSeconds": 6,
+  "sleepBubbleSeconds": 0,
+  "clickExpressionSeconds": 0.9,
+  "animationMinSeconds": 20,
+  "animationMaxSeconds": 60,
+  "idleBreathe": true,
+  "breatheAmplitude": 0.03,
+  "breatheSpeed": 2.2,
+
+  // 无操作超过这么久算“离开”，回来后会说 welcome 里的话
+  "awayThresholdSeconds": 300,
+  // 摸头杀反应表情 + 冷却（秒）
+  "headpatSprite": "pet_headpat",
+  "headpatCooldownSeconds": 4,
+  // 溜达：随机间隔走两步再回来。walkSprite 现在先复用 pet，之后你有走路图可换
+  "strollEnabled": true,
+  "strollMinSeconds": 45,
+  "strollMaxSeconds": 100,
+  "strollSpeed": 90,
+  "walkSprite": "pet_walk",
+
+  "normalSprite": "pet",
+  "sleepSprite": "pet_sleep",
+  "clickSprite": "pet_click",
+  "dragSprite": "pet_drag",
+  "sleepText": "Zzz...",
+
+  "idle": [
+    {
+      "text": "我在这边待机中，没打扰到你吧？",
+      "voice": "",
+      "sprite": "pet_blink",
+      "duration": 6
+    },
+    {
+      "text": "你继续忙，我会乖乖在旁边待着。",
+      "voice": "",
+      "sprite": "pet_blink",
+      "duration": 6
+    },
+    {
+      "text": "突然出现一下。嘿嘿。",
+      "voice": "",
+      "sprite": "pet_happy",
+      "duration": 5
+    }
+  ],
+
+  "click": [
+    {
+      "text": "欸？你点我干嘛呀。",
+      "voice": "",
+      "sprite": "pet_click",
+      "duration": 5
+    },
+    {
+      "text": "我在我在，别戳啦。",
+      "voice": "",
+      "sprite": "pet_click",
+      "duration": 5
+    },
+    {
+      "text": "收到互动一次！",
+      "voice": "",
+      "sprite": "pet_click",
+      "duration": 5
+    }
+  ],
+
+  // 时段问候：进入桌宠时按当前时段说一句，之后跨时段再说
+  "morning": [
+    { "text": "早呀，今天也一起加油！", "voice": "", "sprite": "pet_happy", "duration": 6 },
+    { "text": "早上好，记得吃早饭哦。", "voice": "", "sprite": "pet_happy", "duration": 6 }
+  ],
+  "noon": [
+    { "text": "中午啦，休息一下吃点东西吧。", "voice": "", "sprite": "pet_happy", "duration": 6 }
+  ],
+  "evening": [
+    { "text": "晚上好，今天过得怎么样呀？", "voice": "", "sprite": "pet_blink", "duration": 6 }
+  ],
+  "night": [
+    { "text": "这么晚啦，早点睡不许熬夜哦。", "voice": "", "sprite": "pet_blink", "duration": 6 },
+    { "text": "夜深了，我陪你，但你也要照顾好自己。", "voice": "", "duration": 6 }
+  ],
+
+  // 离开一段时间回来后说
+  "welcome": [
+    { "text": "你回来啦！我等你好久了。", "voice": "", "sprite": "pet_happy", "duration": 6 },
+    { "text": "欢迎回来～有没有想我呀？", "voice": "", "sprite": "pet_wave", "duration": 6 }
+  ],
+
+  // 在头顶来回蹭鼠标触发
+  "headpat": [
+    { "text": "欸嘿……被摸头了。", "voice": "", "sprite": "pet_headpat", "duration": 5 },
+    { "text": "呜、轻一点啦～", "voice": "", "sprite": "pet_headpat", "duration": 5 },
+    { "text": "嘿嘿，好舒服。", "voice": "", "sprite": "pet_headpat", "duration": 5 }
+  ],
+
+  "animations": [
+    {
+      "frames": ["pet", "pet_wink", "pet"],
+      "frameSeconds": 0.18,
+      "loops": 1
+    },
+    {
+      "frames": ["pet", "pet_wave", "pet"],
+      "frameSeconds": 0.24,
+      "loops": 1
+    },
+    {
+      "frames": ["pet", "pet_blink", "pet"],
+      "frameSeconds": 0.16,
+      "loops": 1
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+# Unity generated folders
+/Library/
+/Temp/
+/Obj/
+/Logs/
+/UserSettings/
+/Build/
+/Builds/
+/MemoryCaptures/
+
+# Unity generated files
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity crash/debug artifacts
+sysinfo.txt
+*.stackdump
+*_BurstDebugInformation_DoNotShip/
+
+# IDE/editor files
+.vs/
+.vscode/
+.idea/
+*.tmp
+*.bak
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local/generated save files
+存档.sav
+*.sav
+
+# Generated TTS scratch/output outside checked-in game assets
+/tools/tts/output/
+/tools/tts/tmp/

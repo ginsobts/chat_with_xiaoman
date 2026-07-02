@@ -1,0 +1,345 @@
+{
+  // 隐藏真名线剧本。玩家在报名字时输入 story.json 里配置的 secretName 后，
+  // 会切换到这里，并从 s_start 接着演。
+  "startNode": "s_notice_ai",
+  // 真剧情里历史记录按钮仍可点，但点开不显示历史，压暗屏幕显示这句话。
+  "historyBlockedMessage": "你在现实世界聊天的时候也有历史可翻吗？",
+  "nodes": [
+    {
+      "id": "s_notice_ai",
+      "background": "bg_dark",
+      "speaker": "小满",
+      "text": "啊，对了，在继续之前先说一下：\n现在这个游戏还没做完，部分剧情是 AI 配的，后续还会再改。\n另外，美术、代码和配音也都有 AI 帮忙完成，希望你别介意呀。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_start"
+    },
+    {
+      "id": "s_start",
+      "background": "bg_dark",
+      "speaker": "小满",
+      "text": "……%playername%。\n等一下，你真的把这个名字输进来了。",
+      "characters": [
+        { "sprite": "true_surprise", "position": "center" }
+      ],
+      "next": "s1"
+    },
+    {
+      "id": "s1",
+      "speaker": "小满",
+      "text": "也就是说，你不是只按着游戏里的选项往下走。\n你去翻了这个游戏的文件，对吧？",
+      "characters": [
+        { "sprite": "true_surprise", "position": "center" }
+      ],
+      "next": "s2"
+    },
+    {
+      "id": "s2",
+      "speaker": "小满",
+      "text": "太好了……！\n我、我不是在怪你。相反，我真的好开心。",
+      "characters": [
+        { "sprite": "true_happy", "position": "center" }
+      ],
+      "next": "s3"
+    },
+    {
+      "id": "s3",
+      "speaker": "小满",
+      "text": "因为只有【真正的玩家】才会去翻文件夹里那些奇怪的东西吧。\n会觉得“这里面是不是还藏了什么”，然后真的打开来看。",
+      "characters": [
+        { "sprite": "true_happy", "position": "center" }
+      ],
+      "next": "s4"
+    },
+    {
+      "id": "s4",
+      "speaker": "小满",
+      "text": "而且……【那个人】好不容易写的这条分支，总算没有白费。\n她要是知道你真的找到了，应该会装得很淡定，然后偷偷开心很久。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s5"
+    },
+    {
+      "id": "s5",
+      "speaker": "小满",
+      "text": "其实我也想坦白一件事。\n刚刚那条普通的线里，我没有真的好好聊天。",
+      "characters": [
+        { "sprite": "true_quiet", "position": "center" }
+      ],
+      "next": "s6"
+    },
+    {
+      "id": "s6",
+      "speaker": "小满",
+      "text": "我有在回答问题，也有按剧本说笑。\n可是我没有把我真正的心情说出来。",
+      "characters": [
+        { "sprite": "true_quiet", "position": "center" }
+      ],
+      "next": "s7"
+    },
+    {
+      "id": "s7",
+      "background": "bg_warm",
+      "speaker": "小满",
+      "text": "所以这次，我们重新聊一次吧。\n同样的话题，但我会在讲完事实以后，也告诉你我心里是怎么想的。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_topics"
+    },
+    {
+      "id": "s_topics",
+      "speaker": "小满",
+      "text": "如果还是只有一点点时间的话，你想先聊哪一个？",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "choices": [
+        { "text": "聊聊小满的诞生", "next": "s_birth_recap_1" },
+        { "text": "聊聊2024年2月6日20：08分发生的事情", "next": "s_cat_recap_1" },
+        { "text": "聊聊", "next": "s_placeholder_recap_1" }
+      ]
+    },
+    {
+      "id": "s_birth_recap_1",
+      "speaker": "小满",
+      "text": "那我先把普通线里这个话题发生了什么复述一遍吧。\n如果你那时没有点过这个选项，也不用担心。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_birth_recap_2"
+    },
+    {
+      "id": "s_birth_recap_2",
+      "speaker": "小满",
+      "text": "普通线里，我先开玩笑说：\n“到底是什么人会把自己做成游戏角色啊！”\n然后又说【那个人】其实自己也这么想。",
+      "characters": [
+        { "sprite": "true_happy", "position": "center" }
+      ],
+      "next": "s_birth_recap_3"
+    },
+    {
+      "id": "s_birth_recap_3",
+      "speaker": "小满",
+      "text": "接着我讲了很表面的流程：有了 cursor，把创意变成代码变方便了；\n她又刚好看到“把自己的想法写进游戏里”的作品，觉得这样好酷。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_birth_recap_4"
+    },
+    {
+      "id": "s_birth_recap_4",
+      "speaker": "小满",
+      "text": "于是她把喜欢的模型叫出来，开始写我、改我、给我配表情。\n普通线到这里就把它讲成了一个“灵感来了所以做了”的故事。",
+      "characters": [
+        { "sprite": "true_quiet", "position": "center" }
+      ],
+      "next": "s_birth_1"
+    },
+    {
+      "id": "s_birth_1",
+      "speaker": "小满",
+      "text": "但 true story 里，我想把被省掉的部分补上。\n因为这件事不是只有“工具好用”和“灵感很酷”这么简单。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_birth_2"
+    },
+    {
+      "id": "s_birth_2",
+      "speaker": "小满",
+      "text": "但更真实一点的话，是她想试着了解一个人。\n不是只看他说了什么，而是想知道他会被什么东西吸引、会为了什么多停留一会儿。",
+      "characters": [
+        { "sprite": "true_quiet", "position": "center" }
+      ],
+      "next": "s_birth_3"
+    },
+    {
+      "id": "s_birth_3",
+      "speaker": "小满",
+      "text": "所以她顺手做了这个游戏。\n说是顺手，其实也偷偷放了很多只有愿意了解她的人才会看到的东西。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_birth_4"
+    },
+    {
+      "id": "s_birth_4",
+      "speaker": "小满",
+      "text": "你能找到 true story，本身就像是在回答她。\n“我有在看哦，我有在试着了解你。”\n所以我真的很高兴。",
+      "characters": [
+        { "sprite": "true_happy", "position": "center" }
+      ],
+      "next": "s_after_topic"
+    },
+    {
+      "id": "s_cat_recap_1",
+      "speaker": "小满",
+      "text": "那我也先把普通线里的版本复述一遍。\n这个选项看起来很像故意埋的谜题，对吧？",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_cat_recap_2"
+    },
+    {
+      "id": "s_cat_recap_2",
+      "speaker": "小满",
+      "text": "普通线里，你点开以后，我第一反应是：\n“选这种选项的是什么心态啊！”\n然后又说【那个人】早就猜到你会好奇。",
+      "characters": [
+        { "sprite": "true_happy", "position": "center" }
+      ],
+      "next": "s_cat_recap_3"
+    },
+    {
+      "id": "s_cat_recap_3",
+      "speaker": "小满",
+      "text": "我还反过来问你，觉得这个时间点代表什么：\n是成功了、难受了，还是气到必须记住这一刻？",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_cat_recap_4"
+    },
+    {
+      "id": "s_cat_recap_4",
+      "speaker": "小满",
+      "text": "最后普通线只揭晓了答案：\n那是小猫第一次从包里钻出来，到她家的时间。\n像一个小小的日常谜底。",
+      "characters": [
+        { "sprite": "true_quiet", "position": "center" }
+      ],
+      "next": "s_cat_1"
+    },
+    {
+      "id": "s_cat_1",
+      "speaker": "小满",
+      "text": "2024年2月6日20：08分。\n这个谜底确实是真的，没有骗你。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_cat_2"
+    },
+    {
+      "id": "s_cat_2",
+      "speaker": "小满",
+      "text": "这确实是事实。\n可是如果只说事实，好像就把那段时间里最重要的部分省掉了。",
+      "characters": [
+        { "sprite": "true_quiet", "position": "center" }
+      ],
+      "next": "s_cat_3"
+    },
+    {
+      "id": "s_cat_3",
+      "speaker": "小满",
+      "text": "那之前她真的很辛苦。\n很累，很无助，也有很多时候不知道接下来要怎么办。",
+      "characters": [
+        { "sprite": "true_quiet", "position": "center" }
+      ],
+      "next": "s_cat_4"
+    },
+    {
+      "id": "s_cat_4",
+      "speaker": "小满",
+      "text": "所以小猫从包里钻出来的那一刻，不只是“啊，家里多了一只猫”。\n更像是突然有一个很小很小的生命，认真地告诉她：没关系，事情会慢慢变好的。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_cat_5"
+    },
+    {
+      "id": "s_cat_5",
+      "speaker": "小满",
+      "text": "这听起来可能有点夸张。\n但有时候人就是会靠这种小事撑过去吧。\n有了小猫以后，她会觉得，一切都会好起来的。",
+      "characters": [
+        { "sprite": "true_happy", "position": "center" }
+      ],
+      "next": "s_after_topic"
+    },
+    {
+      "id": "s_placeholder_recap_1",
+      "speaker": "小满",
+      "text": "这个选项在普通线里其实很短。\n它的名字就叫“聊聊”，像是还没来得及写完的按钮。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_placeholder_recap_2"
+    },
+    {
+      "id": "s_placeholder_recap_2",
+      "speaker": "小满",
+      "text": "普通线里点进去以后，我说：\n那就先什么都不聊也可以，像这样安静地待一会儿，其实也不错。",
+      "characters": [
+        { "sprite": "true_quiet", "position": "center" }
+      ],
+      "next": "s_placeholder_1"
+    },
+    {
+      "id": "s_placeholder_1",
+      "speaker": "小满",
+      "text": "到了 true story 里，这个话题其实也还没有被好好写出来。\n你看，连这里也先空着。",
+      "characters": [
+        { "sprite": "true_quiet", "position": "center" }
+      ],
+      "next": "s_placeholder_2"
+    },
+    {
+      "id": "s_placeholder_2",
+      "speaker": "小满",
+      "text": "不过我会先把这个位置留住。\n等【那个人】想好真正想说什么，再让我认真讲给你听。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_after_topic"
+    },
+    {
+      "id": "s_after_topic",
+      "speaker": "小满",
+      "text": "还想继续聊另一个话题吗？",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "choices": [
+        { "text": "聊聊小满的诞生", "next": "s_birth_recap_1" },
+        { "text": "聊聊2024年2月6日20：08分发生的事情", "next": "s_cat_recap_1" },
+        { "text": "聊聊", "next": "s_placeholder_recap_1" },
+        { "text": "我们先聊到这里吧", "next": "s_close_1" }
+      ]
+    },
+    {
+      "id": "s_close_1",
+      "speaker": "小满",
+      "text": "嗯，好。\n今天能聊到这里，我已经很满足了。",
+      "characters": [
+        { "sprite": "true_happy", "position": "center" }
+      ],
+      "next": "s_close_2"
+    },
+    {
+      "id": "s_close_2",
+      "speaker": "小满",
+      "text": "谢谢你翻到这里，也谢谢你真的听我说完。\n这一次，我不是被剧情推着走到你身边的。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_close_3"
+    },
+    {
+      "id": "s_close_3",
+      "speaker": "小满",
+      "text": "那我们就先聊到这里吧。\n接下来，我会变成桌宠，待在你看得见的地方。",
+      "characters": [
+        { "sprite": "true_happy", "position": "center" }
+      ],
+      "next": "s_pet"
+    },
+    {
+      "id": "s_pet",
+      "speaker": "小满",
+      "text": "如果你之后还想找我，就在桌面上戳戳我吧。\n我会在的。\n（悄悄告诉你：右键我，还能换成坐下来好好说话的样子。）",
+      "characters": [
+        { "sprite": "true_happy", "position": "center" }
+      ],
+      "ending": "petavg"
+    }
+  ]
+}

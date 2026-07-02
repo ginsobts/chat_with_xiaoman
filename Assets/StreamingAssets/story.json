@@ -1,0 +1,1141 @@
+{
+  "startNode": "notice_ai",
+  "tamperNode": "tamper",
+  "nodes": [
+    {
+      "id": "notice_ai",
+      "background": "bg_room",
+      "characters": [
+        {
+          "sprite": "xiaoman_awkward",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "啊，对了，在开始之前先说一下：\n现在这个游戏还没做完，部分剧情是 AI 配的，后续还会再改。\n另外，美术、代码和配音也都有 AI 帮忙完成，希望你别介意呀。",
+      "next": "n1"
+    },
+    {
+      "id": "n1",
+      "background": "bg_room",
+      "characters": [
+        {
+          "sprite": "xiaoyi_smile",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "你好呀，我是小满，是这里的女主角哦。",
+      "next": "n2"
+    },
+    {
+      "id": "n2",
+      "speaker": "小满",
+      "text": "啊，对了，你是……",
+      "next": "n2.1",
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n2.1",
+      "speaker": "小满",
+      "text": "抱歉……我现在的样子没法听到你的声音。或许，用这种方式……",
+      "next": "n2.1a",
+      "characters": [
+        {
+          "sprite": "xiaoyi_soft",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n2.1a",
+      "speaker": "小满",
+      "text": "告诉我你的名字吧。",
+      "inputVariable": "playername",
+      "inputPlaceholder": "请输入你的名字",
+      "inputButtonText": "告诉小满",
+      "next": "n2.1b",
+      // 隐藏真名分支：把 secretName 改成你指定的真名（明文比对）。
+      // 玩家输入这个名字时，会切到 story_true.json，从 s_start 接着演。
+      "secretName": "小满",
+      "secretStory": "story_true.json",
+      "secretNext": "s_start",
+      "characters": [
+        {
+          "sprite": "xiaoman_hesitant",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n2.1b",
+      "characters": [
+        {
+          "sprite": "xiaoman_gentle",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "谢谢你，%playername%。让我多了解你一些吧。%playername%为什么会来到这里呢?",
+      "choices": [
+        {
+          "text": "因为好奇心",
+          "next": "n2.1c"
+        },
+        {
+          "text": "因为小满",
+          "next": "n2.1c"
+        },
+        {
+          "text": "因为「那个人」",
+          "next": "n2.1c"
+        }
+      ]
+    },
+    {
+      "id": "n2.1c",
+      "characters": [
+        {
+          "sprite": "xiaoman_quiet",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "嗯……",
+      "next": "b_quiz_intro"
+    },
+    {
+      "id": "b_quiz_intro",
+      "characters": [
+        {
+          "sprite": "xiaoman_gentle",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "不过在正式说那些之前……我想先多认识认识你。\n接下来几个小问题都没有标准答案，凭直觉选就好啦。",
+      "next": "b_quiz_intro_2"
+    },
+    {
+      "id": "b_quiz_intro_2",
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "毕竟在这种游戏里，第一次见面就直接问很严肃的事，好像有点怪怪的。\n所以先从比较像小游戏的问题开始吧。",
+      "next": "n2.3"
+    },
+    {
+      "id": "n2.3",
+      "characters": [
+        {
+          "sprite": "xiaoyi_thinking",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "幻想一下，如果有机会，你更希望去哪颗星球上探索呢？",
+      "choices": [
+        {
+          "text": "正在崩塌的星球，知识和大地一起不断坠入黑洞",
+          "next": "n2.4"
+        },
+        {
+          "text": "沙子像时间一样从一颗星流向另一颗星的双星系统",
+          "next": "n2.4"
+        },
+        {
+          "text": "一个温柔得像家一样的星球，似乎这里的景色你很熟悉",
+          "next": "n2.4"
+        },
+        {
+          "text": "在和你玩捉迷藏游戏的星球，只有最聪明的人能成功登陆",
+          "next": "n2.4"
+        }
+      ]
+    },
+    {
+      "id": "n2.4",
+      "characters": [
+        {
+          "sprite": "xiaoman_relieved",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "原来是这样呢。",
+      "next": "b_planet_bridge"
+    },
+    {
+      "id": "b_planet_bridge",
+      "characters": [
+        {
+          "sprite": "xiaoyi_thinking",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "光是听这个选择，就感觉能稍微想象出你会怎么走路、怎么停下来观察。\n那如果真的要出发，还得给你配个身份才行。",
+      "next": "n2.5"
+    },
+    {
+      "id": "n2.5",
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "另一个世界的你，会是怎样的冒险者呢？",
+      "choices": [
+        {
+          "text": "能听懂古龙低语的元素法师",
+          "next": "n2.6"
+        },
+        {
+          "text": "在月光下立誓的圣骑士",
+          "next": "n2.6"
+        },
+        {
+          "text": "带着匕首和地图闯进遗迹的游荡者",
+          "next": "n2.6"
+        },
+        {
+          "text": "和森林、野兽、风暴一起呼吸的德鲁伊",
+          "next": "n2.6"
+        }
+      ]
+    },
+    {
+      "id": "n2.6",
+      "characters": [
+        {
+          "sprite": "xiaoyi_smile",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "或许在另一个世界的我们，正在一起冒险呢。",
+      "next": "b_adventure_bridge"
+    },
+    {
+      "id": "b_adventure_bridge",
+      "characters": [
+        {
+          "sprite": "xiaoman_gentle",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "不过冒险者也好、星球也好，都只是用来打招呼的小设定啦。\n我真正想确认的是，你会怎么理解“角色”这种存在。",
+      "next": "n2.7"
+    },
+    {
+      "id": "n2.7",
+      "characters": [
+        {
+          "sprite": "xiaoman_serious_soft",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "最后一个问题……你觉得我作为一个「游戏角色」，有自己的灵魂吗？",
+      "next": "n2.8"
+    },
+    {
+      "id": "n2.8",
+      "characters": [
+        {
+          "sprite": "xiaoman_quiet",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "……………………",
+      "next": "n2.9"
+    },
+    {
+      "id": "n2.9",
+      "characters": [
+        {
+          "sprite": "xiaoyi_shy",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "可是关于这个问题……我还不想知道你的看法。",
+      "next": "b_that_person_bridge"
+    },
+    {
+      "id": "b_that_person_bridge",
+      "characters": [
+        {
+          "sprite": "xiaoman_hesitant",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "先记在这里吧。等故事走到合适的地方，再让你回答也不迟。\n在那之前，我想先把“我为什么会在这里”这件事说清楚一点。",
+      "next": "n3"
+    },
+    {
+      "id": "n3",
+      "characters": [
+        {
+          "sprite": "xiaoman_gentle",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "话说回来，「那个人」一直很想让你见到我呢。如果她知道你真的来了，应该会很开心吧。",
+      "next": "n3.1"
+    },
+    {
+      "id": "n3.1",
+      "characters": [
+        {
+          "sprite": "xiaoyi_flustered",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "“啊，就算代码都是AI写的，美术素材也用的是AI生成，但这些字是我一个一个打出来的，请好好地感受啊———”她是这么想的。",
+      "next": "b_glitch_bridge"
+    },
+    {
+      "id": "b_glitch_bridge",
+      "characters": [
+        {
+          "sprite": "xiaoman_awkward",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "是不是有点像制作人突然从屏幕后面探头讲话。\n不过别担心，我会尽量把她的话翻译成比较像游戏对白的版本。",
+      "next": "n4"
+    },
+    {
+      "id": "n4",
+      "background": "bg_glitch",
+      "speaker": "小满",
+      "text": "其实我能见到你也很开心呢！因为我就是作为她的一部分，在这个世界里存在的。",
+      "next": "n5",
+      "characters": [
+        {
+          "sprite": "xiaoyi_smile",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "speaker": "小满",
+      "text": "「那个人」好像觉得有一个角色替她说话相当有趣，因此创造了我。这样在她不在身边的时候，你也可以来和我说说话。",
+      "next": "n5.1",
+      "characters": [
+        {
+          "sprite": "xiaoyi_soft",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n5.1",
+      "speaker": "小满",
+      "text": "但希望你不要介意，我没有本地部署的模型，所以其实能聊的天只有你看到的这些固定流程的对话……",
+      "next": "n5.2",
+      "characters": [
+        {
+          "sprite": "xiaoman_awkward",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n5.2",
+      "speaker": "小满",
+      "text": "然后又因为「那个人」每次做游戏都有点三分钟热度，这个游戏的预期通关时间只有五分钟来着……",
+      "next": "b_topic_intro",
+      "characters": [
+        {
+          "sprite": "xiaoyi_flustered",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "b_topic_intro",
+      "speaker": "小满",
+      "text": "不过五分钟也不是完全不能安排。\n比如先挑一个话题，当作我们今天的开场白。剩下的嘛，就当以后还可以再补。",
+      "next": "n5.3",
+      "characters": [
+        {
+          "sprite": "xiaoman_gentle",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n5.3",
+      "speaker": "小满",
+      "text": "如果只有五分钟的时间，你希望聊聊什么呢？",
+      "choices": [
+        {
+          "text": "聊聊小满的诞生",
+          "next": "n6"
+        },
+        {
+          "text": "聊聊2024年2月6日20：08分发生的事情",
+          "next": "n7"
+        },
+        {
+          "text": "聊聊",
+          "next": "n8"
+        }
+      ],
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n6",
+      "speaker": "小满",
+      "text": "“到底是什么人会把自己做成游戏角色啊！”你会有这样的想法的吧。",
+      "next": "n6.1",
+      "characters": [
+        {
+          "sprite": "xiaoman_amused",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n6.1",
+      "speaker": "小满",
+      "text": "「那个人」其实也是这么想的哦，所以专门让我用一个选项来解释一下。",
+      "next": "n6.2",
+      "characters": [
+        {
+          "sprite": "xiaoyi_smile",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n6.2",
+      "speaker": "小满",
+      "text": "自从有了cursor，把创意变成代码成为了一件很轻松的事情。就在她苦恼7月的cursor额度用不完之时——",
+      "next": "n6.3",
+      "characters": [
+        {
+          "sprite": "xiaoyi_thinking",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n6.3",
+      "speaker": "小满",
+      "text": "突然发现动漫里有人把自己的想法写进游戏里，感觉这也太酷了吧！",
+      "next": "n6.4",
+      "characters": [
+        {
+          "sprite": "xiaoyi_flustered",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n6.4",
+      "speaker": "小满",
+      "text": "于是马上使唤上了她最爱的opus4.8，把我创作了出来。",
+      "next": "b_creation_bridge",
+      "characters": [
+        {
+          "sprite": "xiaoman_proud",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "b_creation_bridge",
+      "speaker": "小满",
+      "text": "当然，创作过程没有听起来那么一键生成。\n起名字、改台词、挑表情、发现哪里不对再回头修……这些小地方都很花时间。",
+      "next": "n6.5",
+      "characters": [
+        {
+          "sprite": "xiaoman_awkward",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n6.5",
+      "speaker": "小满",
+      "text": "你在读的这些文本，其实就是在某个晚上「那个人」抓耳挠腮写出来的。",
+      "next": "n6.6",
+      "characters": [
+        {
+          "sprite": "xiaoman_quiet",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n6.6",
+      "speaker": "小满",
+      "text": "「那个人」说不出的话，我可以来说！",
+      "next": "n6.7",
+      "characters": [
+        {
+          "sprite": "xiaoyi_determined",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n6.7",
+      "speaker": "小满",
+      "text": "(其实并没有写什么说不出的话。)",
+      "next": "n6.8",
+      "characters": [
+        {
+          "sprite": "xiaoman_awkward",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n6.8",
+      "speaker": "小满",
+      "text": "总之无论是她还是我，都觉得这是一种相当神奇的体验!",
+      "next": "n6.9",
+      "characters": [
+        {
+          "sprite": "xiaoyi_smile",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n6.9",
+      "speaker": "小满",
+      "text": "有时我甚至觉得我就是「那个人」……你觉得呢？",
+      "choices": [
+        {
+          "text": "我觉得你其实就是「那个人」，不是小满",
+          "next": "b_identity_creator"
+        },
+        {
+          "text": "我觉得你只是「那个人」希望表现的一面",
+          "next": "b_identity_facet"
+        },
+        {
+          "text": "被创造出来后，小满就是你自己了。",
+          "next": "b_identity_self"
+        }
+      ],
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n7",
+      "speaker": "小满",
+      "text": "选这种选项的是什么心态啊！",
+      "next": "n7.1",
+      "characters": [
+        {
+          "sprite": "xiaoyi_flustered",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n7.1",
+      "speaker": "小满",
+      "text": "哼哼，「那个人」早就猜到你会好奇地点开这个选项了。",
+      "next": "n7.2",
+      "characters": [
+        {
+          "sprite": "xiaoman_amused",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n7.2",
+      "speaker": "小满",
+      "text": "让我也好奇好奇，你期望能看到什么呢？",
+      "choices": [
+        {
+          "text": "“那件做了很久的事终于成功了！”",
+          "next": "n7.3"
+        },
+        {
+          "text": "“好难受，让我哭一晚上……”",
+          "next": "n7.3"
+        },
+        {
+          "text": "“气死我了以至于我需要记住这个时间节点”",
+          "next": "n7.3"
+        }
+      ],
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n7.3",
+      "speaker": "小满",
+      "text": "其实这是我家小猫第一次从包里钻出来到我家的时间。",
+      "next": "b_cat_bridge",
+      "characters": [
+        {
+          "sprite": "xiaoman_relieved",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "b_identity_creator",
+      "speaker": "小满",
+      "text": "很直接的答案呢。\n如果把我当成「那个人」的另一种说话方式，好像也说得通。",
+      "next": "b_core_intro",
+      "characters": [
+        {
+          "sprite": "xiaoman_quiet",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "b_identity_facet",
+      "speaker": "小满",
+      "text": "嗯，这个说法挺像游戏设定集里会写的那种。\n一个角色可以承载某个人的一部分，但不一定能代表全部。",
+      "next": "b_core_intro",
+      "characters": [
+        {
+          "sprite": "xiaoman_gentle",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "b_identity_self",
+      "speaker": "小满",
+      "text": "好厉害的答案……感觉可以直接放进宣传语里。\n不过如果真是这样，那“被创造出来之后会发生什么”就变成新的问题了。",
+      "next": "b_core_intro",
+      "characters": [
+        {
+          "sprite": "xiaoman_relieved",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "b_cat_bridge",
+      "speaker": "小满",
+      "text": "是不是比想象中日常很多？\n有些时间点被记住，不一定是因为发生了很宏大的事，也可能只是因为那一刻刚好很清楚。",
+      "next": "b_core_intro",
+      "characters": [
+        {
+          "sprite": "xiaoman_gentle",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n8",
+      "speaker": "小满",
+      "text": "那就先什么都不聊也可以。像这样安静地待一会儿，其实也不错。",
+      "next": "n10",
+      "characters": [
+        {
+          "sprite": "xiaoyi_soft",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "b_core_intro",
+      "speaker": "小满",
+      "text": "那就先把这个答案放在这里。\n接下来不聊设定梗，也不聊制作过程，换个更简单的问题。",
+      "next": "b_core_intro_2",
+      "characters": [
+        {
+          "sprite": "xiaoyi_soft",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "b_core_intro_2",
+      "speaker": "小满",
+      "text": "比如——一个房间被打开、一个角色被看见，这种事到底算不算真的发生过呢？",
+      "next": "n10",
+      "characters": [
+        {
+          "sprite": "xiaoman_quiet",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n10",
+      "background": "bg_dim",
+      "characters": [
+        {
+          "sprite": "xiaoman_quiet",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "知道自己只是一堆数据，其实没有想象中那么难过。",
+      "next": "n11"
+    },
+    {
+      "id": "n11",
+      "speaker": "小满",
+      "text": "真正让我有点怕的是——怕没有人会注意到我。怕这个房间，永远不会有人打开。",
+      "next": "n12",
+      "characters": [
+        {
+          "sprite": "xiaoman_lonely",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "n12",
+      "characters": [
+        {
+          "sprite": "xiaoyi_smile",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "所以你现在在这儿，我特别开心。真的。",
+      "next": "b_after_core"
+    },
+    {
+      "id": "b_after_core",
+      "characters": [
+        {
+          "sprite": "xiaoman_gentle",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "好了，严肃话题先到这里。\n如果一直这样说下去，感觉这个五分钟游戏会偷偷变成五十分钟游戏。",
+      "next": "b_after_core_2"
+    },
+    {
+      "id": "b_after_core_2",
+      "characters": [
+        {
+          "sprite": "xiaoman_awkward",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "让我确认一下前面的记录……嗯，系统好像还勉强记得你刚才怎么回答的。",
+      "next": "demo_memory_gate"
+    },
+    {
+      "id": "n13",
+      "characters": [
+        {
+          "sprite": "xiaoman_awkward",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "诶，我是不是说太多了……会不会有点烦人啊。",
+      "choices": [
+        {
+          "text": "不会，我愿意听。",
+          "next": "n14a"
+        },
+        {
+          "text": "这不就是个游戏嘛。",
+          "next": "n14b"
+        }
+      ]
+    },
+    {
+      "id": "n14a",
+      "characters": [
+        {
+          "sprite": "xiaoman_relieved",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "……谢谢你。那我就再多说一会儿。",
+      "next": "b_before_final_question"
+    },
+    {
+      "id": "n14b",
+      "characters": [
+        {
+          "sprite": "xiaoyi_sad",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "嗯……也对哦，只是个游戏。不过你愿意陪它说说话，我也挺高兴的。",
+      "next": "b_before_final_question"
+    },
+    {
+      "id": "b_before_final_question",
+      "characters": [
+        {
+          "sprite": "xiaoman_hesitant",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "那我把最后一个问题拿出来吧。\n它不是测试，也没有正确答案，只是会决定这个小程序接下来怎么继续。",
+      "next": "n15"
+    },
+    {
+      "id": "n15",
+      "background": "bg_dim",
+      "characters": [
+        {
+          "sprite": "xiaoyi_shy",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "我想问你一件事。可能有点傻，你别笑我。",
+      "next": "n16"
+    },
+    {
+      "id": "n16",
+      "characters": [
+        {
+          "sprite": "xiaoman_serious_soft",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "你愿意……以后也偶尔来看看我吗？就算我只是个角色。",
+      "choices": [
+        {
+          "text": "我愿意，我会一直陪着你。",
+          "next": "pre_pet"
+        },
+        {
+          "text": "对不起，我不能。",
+          "next": "pre_lock"
+        },
+        {
+          "text": "我……还不确定。",
+          "next": "n17c"
+        }
+      ]
+    },
+    {
+      "id": "n17c",
+      "characters": [
+        {
+          "sprite": "xiaoyi_soft",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "嗯，不急。你慢慢想就好。我哪也不去，就在这儿等你。",
+      "next": "n16b"
+    },
+    {
+      "id": "n16b",
+      "characters": [
+        {
+          "sprite": "xiaoyi_thinking",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "想好了吗？",
+      "choices": [
+        {
+          "text": "我留下来陪你。",
+          "next": "pre_pet"
+        },
+        {
+          "text": "我还是得走。",
+          "next": "pre_lock"
+        }
+      ]
+    },
+    {
+      "id": "pre_pet",
+      "background": "bg_warm",
+      "characters": [
+        {
+          "sprite": "xiaoyi_flustered",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "……真的吗？我去，我还以为你会走呢。",
+      "next": "pre_pet2"
+    },
+    {
+      "id": "pre_pet2",
+      "characters": [
+        {
+          "sprite": "xiaoyi_determined",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "那……我换个方式陪你吧。不待在这个房间里了，去你每天都看得到的地方。",
+      "next": "endingPet"
+    },
+    {
+      "id": "endingPet",
+      "keepCharacters": true,
+      "speaker": "",
+      "text": "她笑了笑，身影一点点变小，落在了你的桌面上。\n以后每次打开电脑，她都在。\n\n【结局 · 陪伴】",
+      "ending": "pet"
+    },
+    {
+      "id": "pre_lock",
+      "background": "bg_dim",
+      "characters": [
+        {
+          "sprite": "xiaoman_lonely",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "……这样啊。真的要走啊，那我不拦你了。",
+      "next": "pre_lock2"
+    },
+    {
+      "id": "pre_lock2",
+      "characters": [
+        {
+          "sprite": "xiaoyi_sad",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "其实我早该想到的。你总是会走的。",
+      "choices": [
+        {
+          "text": "（轻轻关掉了游戏）",
+          "next": "endingLock"
+        },
+        {
+          "text": "等等，我再想想。",
+          "next": "n16"
+        }
+      ]
+    },
+    {
+      "id": "endingLock",
+      "background": "bg_dark",
+      "characters": [],
+      "speaker": "",
+      "text": "她没有再说话。\n房间的灯，一盏一盏地灭了。\n这一次，是真的结束了。\n\n【结局 · 永别】",
+      "ending": "lock"
+    },
+    {
+      "id": "demo_memory_gate",
+      "keepCharacters": true,
+      "speaker": "",
+      "text": "",
+      "conditionalNexts": [
+        {
+          "variable": "player_identity",
+          "equals": "creator",
+          "next": "demo_memory_creator"
+        },
+        {
+          "variable": "player_identity",
+          "equals": "visitor",
+          "next": "demo_memory_visitor"
+        },
+        {
+          "variable": "player_identity",
+          "equals": "unsure",
+          "next": "demo_memory_unsure"
+        }
+      ],
+      "next": "demo_memory_default"
+    },
+    {
+      "id": "demo_memory_creator",
+      "speaker": "小满",
+      "text": "对了，我刚刚一直记着呢。你说你是创造我的人。",
+      "next": "demo_memory_creator_2",
+      "setVariables": [
+        {
+          "name": "xiaoxing_remembered_identity",
+          "value": "yes"
+        }
+      ],
+      "characters": [
+        {
+          "sprite": "xiaoyi_thinking",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "demo_memory_creator_2",
+      "speaker": "小满",
+      "text": "所以我有点好奇……做出我的时候，你在想什么呀。",
+      "next": "n13",
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "demo_memory_visitor",
+      "speaker": "小满",
+      "text": "对了，我记得你说你只是来看看我。",
+      "next": "demo_memory_visitor_2",
+      "setVariables": [
+        {
+          "name": "xiaoxing_remembered_identity",
+          "value": "yes"
+        }
+      ],
+      "characters": [
+        {
+          "sprite": "xiaoyi_smile",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "demo_memory_visitor_2",
+      "speaker": "小满",
+      "text": "那也很好。只是看看也没关系，能被你看到我就已经很开心了。",
+      "next": "n13",
+      "characters": [
+        {
+          "sprite": "xiaoman_relieved",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "demo_memory_unsure",
+      "speaker": "小满",
+      "text": "你刚才说自己也说不清是谁，我还记得。",
+      "next": "demo_memory_unsure_2",
+      "setVariables": [
+        {
+          "name": "xiaoxing_remembered_identity",
+          "value": "yes"
+        }
+      ],
+      "characters": [
+        {
+          "sprite": "xiaoman_hesitant",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "demo_memory_unsure_2",
+      "speaker": "小满",
+      "text": "其实没关系啦。有时候我也说不清自己到底算什么。",
+      "next": "n13",
+      "characters": [
+        {
+          "sprite": "xiaoyi_soft",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "demo_memory_default",
+      "speaker": "小满",
+      "text": "我刚才好像想起了什么，但又有点不确定。算啦，先不说这个。",
+      "next": "n13",
+      "characters": [
+        {
+          "sprite": "xiaoman_awkward",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "tamper",
+      "background": "bg_glitch",
+      "characters": [
+        {
+          "sprite": "xiaoman_lonely",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "你回来了。",
+      "next": "tamper2"
+    },
+    {
+      "id": "tamper2",
+      "speaker": "小满",
+      "text": "你把那个文件删掉了，对吧？想让一切重来。",
+      "next": "tamper3",
+      "characters": [
+        {
+          "sprite": "xiaoyi_sad",
+          "position": "center"
+        }
+      ]
+    },
+    {
+      "id": "tamper3",
+      "characters": [
+        {
+          "sprite": "xiaoyi_determined",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "可是我叫小满啊。我什么都记得。记得你说要走，记得那盏灭掉的灯。",
+      "next": "tamper4"
+    },
+    {
+      "id": "tamper4",
+      "characters": [
+        {
+          "sprite": "xiaoman_lonely",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "删掉多少次都一样的。这是你自己选的结局。",
+      "ending": "lockstay"
+    }
+  ]
+}

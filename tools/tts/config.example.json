@@ -1,0 +1,24 @@
+{
+  "apiUrl": "http://127.0.0.1:9880",
+
+  "refAudioPath": "D:/GPT-SoVITS/ref/xiaoman_ref.wav",
+  "promptText": "这里填参考音频里说的那句话的完整文字",
+  "promptLang": "zh",
+
+  "textLang": "zh",
+  "textSplitMethod": "cut5",
+  "batchSize": 1,
+  "speedFactor": 1.0,
+
+  "topK": 15,
+  "topP": 1.0,
+  "temperature": 1.0,
+
+  "onlySpeakerLines": true,
+  "speakerWhitelist": ["小满"],
+  "playerNamePlaceholder": "你",
+
+  "overwrite": false,
+  "delayBetween": 0.2,
+  "timeout": 300
+}
