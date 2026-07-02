@@ -13,13 +13,12 @@ namespace VN.EditorTools
     /// 2) 命令行 batchmode：
     ///    Unity.exe -quit -batchmode -projectPath &lt;proj&gt; -executeMethod VN.EditorTools.BuildScript.BuildWindows
     /// 输出到项目根目录 Build/cgjpetgame/。
-    /// 注意：exe 命名为 essential.exe，是为了让 Unity 的运行数据夹叫 essential_Data，
-    /// 打包后处理里再统一改成 essential_data。game_data 则单独作为玩家可见的提示文件夹。
+    /// 注意：exe 命名为 game.exe，因此 Unity 的运行数据夹需要叫 game_Data/game_data。
     /// </summary>
     public static class BuildScript
     {
         private const string OutputDir = "Build/cgjpetgame";
-        private const string ExeName = "essential.exe";
+        private const string ExeName = "game.exe";
 
         [MenuItem("打包/打包 Windows(64位)")]
         public static void BuildWindowsMenu()

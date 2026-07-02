@@ -12,8 +12,7 @@ namespace VN.EditorTools
     /// <summary>
     /// 打包完成后：
     /// 1) 把 StreamingAssets 素材（story/图片/语音等）合并加密成 game.pak，并删除原明文文件。
-    /// 2) 把神秘指导文档移到 build 根目录下的 game_data 文件夹，让该文件夹只放提示 txt。
-    /// 3) 把 Unity 真正运行需要的数据目录改名成 essential_data。
+    /// 2) 把 Unity 运行数据目录整理为 game_data（必须与 game.exe 对应）。
     /// </summary>
     public class PakBuildPostprocess : IPostprocessBuildWithReport
     {
@@ -60,8 +59,7 @@ namespace VN.EditorTools
         /// <summary>
         /// 整理打包目录，让玩家看到的根目录更干净：
         ///  - 删掉崩溃处理器、Burst 调试等发布不需要的散件；
-        ///  - 把神秘指导文档移到 game_data（这个文件夹只放提示 txt）；
-        ///  - 把 Unity 运行数据夹 &lt;exe&gt;_Data 改名成 essential_data。
+        ///  - 把 Unity 运行数据夹 &lt;exe&gt;_Data 改名成 game_data。
         /// UnityPlayer.dll 必须和 exe 同级，无法移动，予以保留。
         /// </summary>
         private void ReorganizeBuild(string buildDir, string dataDir, string saDir)
@@ -78,33 +76,75 @@ namespace VN.EditorTools
                 try { Directory.Delete(d, true); } catch { }
             }
 
-            // 2) 玩家可见提示文件夹：game_data 只放神秘指导 txt。
-            string guideSrc = Path.Combine(saDir, PakCrypto.GuideFileName);
-            string guideDir = Path.Combine(buildDir, "game_data");
-            if (Directory.Exists(guideDir)) Directory.Delete(guideDir, true);
-            Directory.CreateDirectory(guideDir);
-            if (File.Exists(guideSrc))
-            {
-                string guideDst = Path.Combine(guideDir, PakCrypto.GuideFileName);
-                File.Move(guideSrc, guideDst);
-                Debug.Log("[Build] 神秘指导文档已移到 game_data。");
-            }
-            else
-            {
-                Debug.LogWarning("[Build] 未找到神秘指导文档，game_data 将为空。");
-            }
+            // 2) Unity 运行数据夹改名成 game_data（大小写差异需两步 Move 以确保真正改成小写）。
+            // game.exe 会查找 game_Data/game_data，不能改成 essential_data。
+            string finalData = Path.Combine(buildDir, "game_data");
+            string tmp = Path.Combine(buildDir, "__game_data_tmp__");
 
-            // 3) Unity 运行数据夹改名成 essential_data（大小写差异需两步 Move 以确保真正改成小写）
-            if (Directory.Exists(dataDir))
+            // 自愈：若上次打包中途失败，数据夹可能残留成 __game_data_tmp__。
+            if (!Directory.Exists(dataDir) && Directory.Exists(tmp))
+                dataDir = tmp;
+
+            if (Directory.Exists(dataDir) &&
+                !string.Equals(dataDir, finalData, System.StringComparison.Ordinal))
             {
-                string finalData = Path.Combine(buildDir, "essential_data");
-                if (!string.Equals(dataDir, finalData, System.StringComparison.Ordinal))
+                try
                 {
-                    string tmp = Path.Combine(buildDir, "__essential_data_tmp__");
-                    if (Directory.Exists(tmp)) { try { Directory.Delete(tmp, true); } catch { } }
-                    Directory.Move(dataDir, tmp);
-                    Directory.Move(tmp, finalData);
-                    Debug.Log("[Build] Unity 数据夹已改名为 essential_data。");
+                    // 目标已存在（历史遗留的 game_data）会导致 Move 失败，先清掉。
+                    if (Directory.Exists(finalData) &&
+                        !string.Equals(dataDir, finalData, System.StringComparison.OrdinalIgnoreCase))
+                    {
+                        Directory.Delete(finalData, true);
+                    }
+
+                    // 大小写差异（game_Data -> game_data）在 Windows 上无法直接 Move，需经中转名。
+                    // 刚改名后目录句柄可能还被杀软/索引器占用，直接第二次 Move 会 "Access denied"，
+                    // 所以两步都用带延时重试的 Move。
+                    if (!string.Equals(dataDir, tmp, System.StringComparison.Ordinal))
+                    {
+                        if (Directory.Exists(tmp)) { try { Directory.Delete(tmp, true); } catch { } }
+                        MoveDirWithRetry(dataDir, tmp);
+                    }
+                    MoveDirWithRetry(tmp, finalData);
+                    Debug.Log("[Build] Unity 数据夹已改名为 game_data。");
+                }
+                catch (System.Exception e)
+                {
+                    // 关键：改名失败绝不能留下半成品，否则 game.exe 找不到数据夹。
+                    // 尽最大努力把数据夹恢复成一个 game.exe 能识别的名字。
+                    Debug.LogError("[Build] 数据夹改名失败，尝试回退: " + e.Message);
+                    try
+                    {
+                        if (!Directory.Exists(finalData) && Directory.Exists(tmp))
+                            MoveDirWithRetry(tmp, finalData);
+                    }
+                    catch (System.Exception e2)
+                    {
+                        Debug.LogError("[Build] 数据夹回退也失败，请手动把 __game_data_tmp__ 改名为 game_data: " + e2.Message);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Windows 上刚被改名/写完的目录常被杀软、Windows 搜索索引、资源管理器短暂占用句柄，
+        /// 立刻再对它 Move 会抛 "Access denied"/IOException。这里做带延时的重试直到句柄释放。
+        /// </summary>
+        private static void MoveDirWithRetry(string from, string to, int attempts = 10, int delayMs = 400)
+        {
+            for (int i = 0; ; i++)
+            {
+                try
+                {
+                    Directory.Move(from, to);
+                    return;
+                }
+                catch (System.Exception) when (i < attempts - 1)
+                {
+                    // 释放可能残留的托管句柄，给系统一点时间放锁后重试。
+                    System.GC.Collect();
+                    System.GC.WaitForPendingFinalizers();
+                    System.Threading.Thread.Sleep(delayMs);
                 }
             }
         }

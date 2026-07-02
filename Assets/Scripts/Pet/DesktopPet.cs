@@ -20,6 +20,7 @@ namespace VN
         private RectTransform _menu;
         private RectTransform _bubble;
         private Text _bubbleText;
+        private LayoutElement _bubbleTextLayout;
         private AudioSource _voiceSource;
         private PetDialogueConfig _config;
         private Sprite _dragSprite;
@@ -160,16 +161,39 @@ namespace VN
             var bubbleImg = UITheme.AddPanel("PetBubble", root, new Color(1f, 1f, 1f, 0.96f));
             bubbleImg.raycastTarget = false;
             _bubble = bubbleImg.rectTransform;
+            // 锚定在画布底部中心，pivot 用左下角，方便按尺寸做出屏夹紧。
             _bubble.anchorMin = new Vector2(0.5f, 0f);
             _bubble.anchorMax = new Vector2(0.5f, 0f);
-            _bubble.sizeDelta = new Vector2(430f, 135f);
+            _bubble.pivot = new Vector2(0f, 0f);
 
-            _bubbleText = UITheme.AddText("PetBubbleText", _bubble, "", 28, Color.black, TextAnchor.MiddleLeft);
+            // 让气泡随文字内容自适应大小（短句变小，长句自动换行长高）。
+            var layout = bubbleImg.gameObject.AddComponent<HorizontalLayoutGroup>();
+            layout.padding = new RectOffset(22, 22, 14, 14);
+            layout.childControlWidth = true;
+            layout.childControlHeight = true;
+            layout.childForceExpandWidth = false;
+            layout.childForceExpandHeight = false;
+
+            var fitter = bubbleImg.gameObject.AddComponent<ContentSizeFitter>();
+            fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+            fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+            _bubbleText = UITheme.AddText("PetBubbleText", _bubble, "", 26, Color.black, TextAnchor.MiddleLeft);
             _bubbleText.raycastTarget = false;
-            UITheme.SetRect(_bubbleText.rectTransform, Vector2.zero, Vector2.one,
-                new Vector2(24f, 16f), new Vector2(-24f, -16f));
+            _bubbleTextLayout = _bubbleText.gameObject.AddComponent<LayoutElement>();
 
             _bubble.gameObject.SetActive(false);
+        }
+
+        // 短句让气泡贴合文字；超过上限宽度则限制宽度并换行，避免铺满整屏。
+        private void ClampBubbleWidth()
+        {
+            if (_bubbleText == null || _bubbleTextLayout == null) return;
+            const float maxWidth = 360f; // 参考分辨率(1920)下的最大文本宽度
+            _bubbleTextLayout.preferredWidth = -1f;
+            float natural = _bubbleText.preferredWidth;
+            _bubbleTextLayout.preferredWidth = Mathf.Min(natural, maxWidth);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(_bubble);
         }
 
         private void Update()
@@ -788,6 +812,7 @@ namespace VN
 
             _bubbleText.text = text;
             _bubble.gameObject.SetActive(!string.IsNullOrEmpty(text));
+            if (_bubble.gameObject.activeSelf) ClampBubbleWidth();
             UpdateBubblePosition();
 
             if (!string.IsNullOrEmpty(voice))
@@ -823,7 +848,19 @@ namespace VN
         private void UpdateBubblePosition()
         {
             if (_bubble == null || !_bubble.gameObject.activeSelf || _petRect == null) return;
-            _bubble.anchoredPosition = _petRect.anchoredPosition + new Vector2(215f, 300f);
+
+            Vector2 canvas = GameManager.Instance.Root.rect.size;
+            float halfW = canvas.x * 0.5f;
+            float bw = _bubble.rect.width;
+            float bh = _bubble.rect.height;
+
+            // 放在桌宠上方、略微偏左盖住头顶，再按画布尺寸夹紧，保证任何分辨率都不出屏。
+            Vector2 pet = _petRect.anchoredPosition;
+            float x = pet.x - bw * 0.25f;
+            float y = pet.y + 150f;
+            x = Mathf.Clamp(x, -halfW + 8f, halfW - bw - 8f);
+            y = Mathf.Clamp(y, 8f, canvas.y - bh - 8f);
+            _bubble.anchoredPosition = new Vector2(x, y);
         }
 
         private PetLine PickLine(List<PetLine> lines)
