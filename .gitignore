@@ -44,5 +44,6 @@ desktop.ini
 *.sav
 
 # Generated TTS scratch/output outside checked-in game assets
+/tools/tts/config.json
 /tools/tts/output/
 /tools/tts/tmp/
