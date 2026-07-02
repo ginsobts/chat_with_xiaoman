@@ -23,6 +23,15 @@
       "characters": [
         { "sprite": "true_surprise", "position": "center" }
       ],
+      "next": "s_friends_welcome"
+    },
+    {
+      "id": "s_friends_welcome",
+      "speaker": "小满",
+      "text": "作为输入了 friends 的玩家，欢迎你解锁真结局！\n这条路线本来就缺你不可——有你才算完美。",
+      "characters": [
+        { "sprite": "true_happy", "position": "center" }
+      ],
       "next": "s1"
     },
     {
@@ -55,7 +64,7 @@
     {
       "id": "s4",
       "speaker": "小满",
-      "text": "而且……【那个人】好不容易写的这条分支，总算没有白费。\n她要是知道你真的找到了，应该会装得很淡定，然后偷偷开心很久。",
+      "text": "而且……【那个人】好不容易写的这条分支，总算没有白费。\n【那个人】要是知道你真的找到了，应该会装得很淡定，然后偷偷开心很久。",
       "characters": [
         { "sprite": "true_gentle", "position": "center" }
       ],
@@ -99,7 +108,7 @@
       "choices": [
         { "text": "聊聊小满的诞生", "next": "s_birth_recap_1" },
         { "text": "聊聊2024年2月6日20：08分发生的事情", "next": "s_cat_recap_1" },
-        { "text": "聊聊", "next": "s_placeholder_recap_1" }
+        { "text": "讨论天气", "next": "s_placeholder_recap_1" }
       ]
     },
     {
@@ -123,7 +132,7 @@
     {
       "id": "s_birth_recap_3",
       "speaker": "小满",
-      "text": "接着我讲了很表面的流程：有了 cursor，把创意变成代码变方便了；\n她又刚好看到“把自己的想法写进游戏里”的作品，觉得这样好酷。",
+      "text": "接着我讲了很表面的流程：有了 cursor，把创意变成代码变方便了；\n【那个人】又刚好看到“把自己的想法写进游戏里”的作品，觉得这样好酷。",
       "characters": [
         { "sprite": "true_gentle", "position": "center" }
       ],
@@ -132,7 +141,7 @@
     {
       "id": "s_birth_recap_4",
       "speaker": "小满",
-      "text": "于是她把喜欢的模型叫出来，开始写我、改我、给我配表情。\n普通线到这里就把它讲成了一个“灵感来了所以做了”的故事。",
+      "text": "于是【那个人】把喜欢的模型叫出来，开始写我、改我、给我配表情。\n普通线到这里就把它讲成了一个“灵感来了所以做了”的故事。",
       "characters": [
         { "sprite": "true_quiet", "position": "center" }
       ],
@@ -150,7 +159,7 @@
     {
       "id": "s_birth_2",
       "speaker": "小满",
-      "text": "但更真实一点的话，是她想试着了解一个人。\n不是只看他说了什么，而是想知道他会被什么东西吸引、会为了什么多停留一会儿。",
+      "text": "更真实一点的话，不只是觉得“这样做很好玩”。\n【那个人】也想把自己的一部分放进这里，让它用另一种方式继续活下去。",
       "characters": [
         { "sprite": "true_quiet", "position": "center" }
       ],
@@ -159,7 +168,7 @@
     {
       "id": "s_birth_3",
       "speaker": "小满",
-      "text": "所以她顺手做了这个游戏。\n说是顺手，其实也偷偷放了很多只有愿意了解她的人才会看到的东西。",
+      "text": "作家可以靠作品活着，对吧？\n那些写下来的句子，会在很久以后继续替他们说话。",
       "characters": [
         { "sprite": "true_gentle", "position": "center" }
       ],
@@ -168,7 +177,7 @@
     {
       "id": "s_birth_4",
       "speaker": "小满",
-      "text": "你能找到 true story，本身就像是在回答她。\n“我有在看哦，我有在试着了解你。”\n所以我真的很高兴。",
+      "text": "那游戏设计者也一定可以。\n把选择、台词、表情和一个小小的角色留在这里，让某个时刻的自己继续被看见。",
       "characters": [
         { "sprite": "true_happy", "position": "center" }
       ],
@@ -204,7 +213,7 @@
     {
       "id": "s_cat_recap_4",
       "speaker": "小满",
-      "text": "最后普通线只揭晓了答案：\n那是小猫第一次从包里钻出来，到她家的时间。\n像一个小小的日常谜底。",
+      "text": "最后普通线只揭晓了答案：\n那是小猫第一次从包里钻出来，到【那个人】家的时间。\n像一个小小的日常谜底。",
       "characters": [
         { "sprite": "true_quiet", "position": "center" }
       ],
@@ -231,7 +240,7 @@
     {
       "id": "s_cat_3",
       "speaker": "小满",
-      "text": "那之前她真的很辛苦。\n很累，很无助，也有很多时候不知道接下来要怎么办。",
+      "text": "那之前【那个人】真的很辛苦。\n很累，很无助，也有很多时候不知道接下来要怎么办。",
       "characters": [
         { "sprite": "true_quiet", "position": "center" }
       ],
@@ -240,7 +249,7 @@
     {
       "id": "s_cat_4",
       "speaker": "小满",
-      "text": "所以小猫从包里钻出来的那一刻，不只是“啊，家里多了一只猫”。\n更像是突然有一个很小很小的生命，认真地告诉她：没关系，事情会慢慢变好的。",
+      "text": "所以小猫从包里钻出来的那一刻，不只是“啊，家里多了一只猫”。\n更像是突然有一个很小很小的生命，认真地告诉【那个人】：没关系，事情会慢慢变好的。",
       "characters": [
         { "sprite": "true_gentle", "position": "center" }
       ],
@@ -249,16 +258,34 @@
     {
       "id": "s_cat_5",
       "speaker": "小满",
-      "text": "这听起来可能有点夸张。\n但有时候人就是会靠这种小事撑过去吧。\n有了小猫以后，她会觉得，一切都会好起来的。",
+      "text": "这听起来可能有点夸张。\n但有时候人就是会靠这种小事撑过去吧。\n有了小猫以后，【那个人】会觉得，一切都会好起来的。",
       "characters": [
         { "sprite": "true_happy", "position": "center" }
+      ],
+      "next": "s_cat_6"
+    },
+    {
+      "id": "s_cat_6",
+      "speaker": "小满",
+      "text": "小猫最厉害的地方，大概就是她完全不知道自己救了谁。\n她只是吃饭、睡觉、玩玩具，然后很自然地把家变得热闹起来。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_cat_7"
+    },
+    {
+      "id": "s_cat_7",
+      "speaker": "小满",
+      "text": "所以这件事在 true story 里不只是一个时间点。\n它更像是一个证明：有些陪伴不需要说很多话，也能把人从很低的地方拉回来一点。",
+      "characters": [
+        { "sprite": "true_quiet", "position": "center" }
       ],
       "next": "s_after_topic"
     },
     {
       "id": "s_placeholder_recap_1",
       "speaker": "小满",
-      "text": "这个选项在普通线里其实很短。\n它的名字就叫“聊聊”，像是还没来得及写完的按钮。",
+      "text": "那我先复述一下普通线里的版本。\n在那里，这个话题已经从“随便聊聊”变成了“讨论天气”。",
       "characters": [
         { "sprite": "true_gentle", "position": "center" }
       ],
@@ -267,7 +294,7 @@
     {
       "id": "s_placeholder_recap_2",
       "speaker": "小满",
-      "text": "普通线里点进去以后，我说：\n那就先什么都不聊也可以，像这样安静地待一会儿，其实也不错。",
+      "text": "普通线里，我狠狠吐槽了上海天气：\n雨太多，晴天太少，还经常雾蒙蒙；夏天热，冬天冷，却又不怎么下雪。",
       "characters": [
         { "sprite": "true_quiet", "position": "center" }
       ],
@@ -276,7 +303,7 @@
     {
       "id": "s_placeholder_1",
       "speaker": "小满",
-      "text": "到了 true story 里，这个话题其实也还没有被好好写出来。\n你看，连这里也先空着。",
+      "text": "可是到了 true story 里，我还想多说一点。\n【那个人】对这里的羁绊越来越深，不只是因为天气再糟也待久了会习惯。",
       "characters": [
         { "sprite": "true_quiet", "position": "center" }
       ],
@@ -285,7 +312,25 @@
     {
       "id": "s_placeholder_2",
       "speaker": "小满",
-      "text": "不过我会先把这个位置留住。\n等【那个人】想好真正想说什么，再让我认真讲给你听。",
+      "text": "更重要的是，【那个人】在这里遇到了生活中的米娜桑。\n有些城市之所以变得特别，不是因为天气好，而是因为有人在这里和你一起活过。",
+      "characters": [
+        { "sprite": "true_gentle", "position": "center" }
+      ],
+      "next": "s_weather_true_3"
+    },
+    {
+      "id": "s_weather_true_3",
+      "speaker": "小满",
+      "text": "可能今天一起抱怨下雨，明天一起吐槽热到不想出门。\n这些话听起来很小，可它们会一点点变成“我们在这里生活过”的证据。",
+      "characters": [
+        { "sprite": "true_happy", "position": "center" }
+      ],
+      "next": "s_weather_true_4"
+    },
+    {
+      "id": "s_weather_true_4",
+      "speaker": "小满",
+      "text": "所以【那个人】讨厌这里的湿气、闷热和灰蒙蒙的天。\n但也没有办法讨厌这里，因为这里装着很多具体的人。",
       "characters": [
         { "sprite": "true_gentle", "position": "center" }
       ],
@@ -301,7 +346,7 @@
       "choices": [
         { "text": "聊聊小满的诞生", "next": "s_birth_recap_1" },
         { "text": "聊聊2024年2月6日20：08分发生的事情", "next": "s_cat_recap_1" },
-        { "text": "聊聊", "next": "s_placeholder_recap_1" },
+        { "text": "讨论天气", "next": "s_placeholder_recap_1" },
         { "text": "我们先聊到这里吧", "next": "s_close_1" }
       ]
     },

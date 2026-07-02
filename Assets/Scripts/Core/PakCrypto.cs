@@ -13,8 +13,8 @@ namespace VN
         public const string PakFileName = "game.pak";
 
         // 打包文件保持明文、不进 pak 的文件名（相对 StreamingAssets 根，全小写比较）。
-        // 神秘指导文档要让玩家能翻到，所以留明文。
-        public const string GuideFileName = "神秘指导.txt";
+        // True story hint document stays plaintext so players can discover it by browsing files.
+        public const string GuideFileName = "the_true_story.txt";
 
         public static readonly byte[] Magic = Encoding.ASCII.GetBytes("CGJPAK01");
 

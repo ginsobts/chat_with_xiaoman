@@ -6,7 +6,8 @@ namespace VN
 {
     public static class MainMenuUI
     {
-        public static void Build(RectTransform root, UnityAction onStart, UnityAction onQuit, bool storyOk)
+        public static void Build(RectTransform root, UnityAction onStart, UnityAction onQuit,
+            UnityAction onToggleLanguage, bool storyOk)
         {
             var bg = UITheme.AddImage("MenuBG", root, Color.white);
             UITheme.FullStretch(bg.rectTransform);
@@ -19,21 +20,26 @@ namespace VN
                 new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
                 new Vector2(-260, -170), new Vector2(260, 430));
 
-            var startBtn = UITheme.AddButton("StartBtn", root, "开始游戏", 40, onStart);
+            var startBtn = UITheme.AddButton("StartBtn", root, GameLanguage.MainMenuStart, 40, onStart);
             UITheme.SetRect(startBtn.GetComponent<RectTransform>(),
                 new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
                 new Vector2(-220, 180), new Vector2(220, 270));
             startBtn.interactable = storyOk;
 
-            var quitBtn = UITheme.AddButton("QuitBtn", root, "退出", 36, onQuit);
-            UITheme.SetRect(quitBtn.GetComponent<RectTransform>(),
+            var langBtn = UITheme.AddButton("LanguageBtn", root, GameLanguage.LanguageButton, 30, onToggleLanguage);
+            UITheme.SetRect(langBtn.GetComponent<RectTransform>(),
                 new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
                 new Vector2(-220, 70), new Vector2(220, 150));
+
+            var quitBtn = UITheme.AddButton("QuitBtn", root, GameLanguage.MainMenuQuit, 36, onQuit);
+            UITheme.SetRect(quitBtn.GetComponent<RectTransform>(),
+                new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
+                new Vector2(-220, -35), new Vector2(220, 45));
 
             if (!storyOk)
             {
                 var warn = UITheme.AddText("Warn", root,
-                    "未找到剧本 story.json", 28, new Color(0.9f, 0.4f, 0.4f), TextAnchor.MiddleCenter);
+                    GameLanguage.MissingStory, 28, new Color(0.9f, 0.4f, 0.4f), TextAnchor.MiddleCenter);
                 UITheme.SetRect(warn.rectTransform,
                     new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
                     new Vector2(-400, 60), new Vector2(400, 120));

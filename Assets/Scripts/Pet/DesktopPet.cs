@@ -25,6 +25,11 @@ namespace VN
         private PetDialogueConfig _config;
         private Sprite _dragSprite;
 
+        // 语音静音开关：默认静音，玩家可在右键菜单里取消静音（选择会被记住）。
+        private bool _muted = true;
+        private Text _muteLabel;
+        private const string MutePrefKey = "pet_voice_muted";
+
         private bool _dragging;
         private bool _dragMoved;
         private bool _sleeping;
@@ -112,7 +117,9 @@ namespace VN
         private void BuildPet()
         {
             var root = GameManager.Instance.Root;
-            _config = PetDialogueConfig.Load();
+            // 真假结局两套桌宠对白：true 线读 pet_dialogues_true.json，普通线读 pet_dialogues.json。
+            string petDialogueFile = _avgToggle ? "pet_dialogues_true.json" : "pet_dialogues.json";
+            _config = PetDialogueConfig.Load(GameLanguage.LocalizedJson(petDialogueFile));
             _voiceSource = gameObject.AddComponent<AudioSource>();
 
             _petImage = UITheme.AddImage("Pet", root, Color.white);
@@ -128,11 +135,16 @@ namespace VN
             _normalRotation = _petRect.localRotation;
             _normalSprite = _petImage.sprite;
 
+            // 读取上次的静音选择（默认静音）。
+            _muted = PlayerPrefs.GetInt(MutePrefKey, 1) == 1;
+
             // 右键菜单（默认隐藏）：按钮从上往下堆叠。
             var menuItems = new List<(string, UnityEngine.Events.UnityAction)>();
+            int muteIndex = menuItems.Count;
+            menuItems.Add((MuteMenuLabel(), ToggleMute));
             if (_avgToggle)
-                menuItems.Add(("切换成对话", () => GameManager.Instance.EnterAvgMode()));
-            menuItems.Add(("退出", () => GameManager.Instance.QuitGame()));
+                menuItems.Add((GameLanguage.SwitchToDialogue, () => GameManager.Instance.EnterAvgMode()));
+            menuItems.Add((GameLanguage.Quit, () => GameManager.Instance.QuitGame()));
 
             const float btnH = 58f, pad = 8f;
             float menuH = menuItems.Count * btnH + pad * 2f;
@@ -150,6 +162,7 @@ namespace VN
                 rt.pivot = new Vector2(0.5f, 1f);
                 rt.offsetMin = new Vector2(pad, -(pad + (i + 1) * btnH));
                 rt.offsetMax = new Vector2(-pad, -(pad + i * btnH));
+                if (i == muteIndex) _muteLabel = btn.GetComponentInChildren<Text>();
             }
             _menu.gameObject.SetActive(false);
 
@@ -793,6 +806,22 @@ namespace VN
             _expressionRoutine = null;
         }
 
+        private string MuteMenuLabel()
+        {
+            return _muted ? GameLanguage.Unmute : GameLanguage.Mute;
+        }
+
+        private void ToggleMute()
+        {
+            _muted = !_muted;
+            PlayerPrefs.SetInt(MutePrefKey, _muted ? 1 : 0);
+            PlayerPrefs.Save();
+            if (_muted && _voiceSource != null)
+                _voiceSource.Stop();
+            if (_muteLabel != null)
+                _muteLabel.text = MuteMenuLabel();
+        }
+
         private void Speak(PetLine line)
         {
             if (line == null) return;
@@ -815,7 +844,7 @@ namespace VN
             if (_bubble.gameObject.activeSelf) ClampBubbleWidth();
             UpdateBubblePosition();
 
-            if (!string.IsNullOrEmpty(voice))
+            if (!_muted && !string.IsNullOrEmpty(voice))
                 _voiceRoutine = StartCoroutine(PlayVoice(voice));
 
             if (duration > 0f)
@@ -927,15 +956,20 @@ namespace VN
         public List<PetLine> headpat = new List<PetLine>();
         public List<PetAnimation> animations = new List<PetAnimation>();
 
-        public static PetDialogueConfig Load()
+        public static PetDialogueConfig Load(string fileName = "pet_dialogues.json")
         {
+            if (string.IsNullOrEmpty(fileName)) fileName = "pet_dialogues.json";
             try
             {
                 string json = null;
-                if (!Pak.TryGetText("pet_dialogues.json", out json))
+                if (!Pak.TryGetText(fileName, out json))
                 {
-                    string path = Path.Combine(Application.streamingAssetsPath, "pet_dialogues.json");
-                    if (!File.Exists(path)) return MakeDefault();
+                    string path = Path.Combine(Application.streamingAssetsPath, fileName);
+                    if (!File.Exists(path))
+                    {
+                        // true 线专属配置缺失时，回退到默认（普通）桌宠配置，保证不至于空白。
+                        return fileName == "pet_dialogues.json" ? MakeDefault() : Load("pet_dialogues.json");
+                    }
                     json = File.ReadAllText(path);
                 }
                 var config = JsonUtility.FromJson<PetDialogueConfig>(JsonCommentUtility.StripComments(json));
@@ -943,13 +977,38 @@ namespace VN
             }
             catch (System.Exception e)
             {
-                Debug.LogWarning("[DesktopPet] 读取 pet_dialogues.json 失败，使用默认配置: " + e.Message);
+                Debug.LogWarning("[DesktopPet] 读取 " + fileName + " 失败，使用默认配置: " + e.Message);
                 return MakeDefault();
             }
         }
 
         private static PetDialogueConfig MakeDefault()
         {
+            if (GameLanguage.IsEnglish)
+            {
+                return new PetDialogueConfig
+                {
+                    idle = new List<PetLine>
+                    {
+                        new PetLine { text = "I am waiting over here. Am I disturbing you?" },
+                        new PetLine { text = "Keep working. I will stay quietly beside you." },
+                        new PetLine { text = "Just popping out for a moment." }
+                    },
+                    click = new List<PetLine>
+                    {
+                        new PetLine { text = "Hm? Why did you poke me?" },
+                        new PetLine { text = "I am here. Please do not poke too much." },
+                        new PetLine { text = "Interaction received!" }
+                    },
+                    morning = new List<PetLine> { new PetLine { text = "Good morning. Let us do our best today.", sprite = "pet_happy" } },
+                    noon = new List<PetLine> { new PetLine { text = "It is noon. Take a break and eat something.", sprite = "pet_happy" } },
+                    evening = new List<PetLine> { new PetLine { text = "Good evening. How was your day?", sprite = "pet_blink" } },
+                    night = new List<PetLine> { new PetLine { text = "It is late. Please sleep earlier.", sprite = "pet_blink" } },
+                    welcome = new List<PetLine> { new PetLine { text = "You are back. I waited for you.", sprite = "pet_happy" } },
+                    headpat = new List<PetLine> { new PetLine { text = "Hehe... head pats.", sprite = "pet_happy" } }
+                };
+            }
+
             return new PetDialogueConfig
             {
                 idle = new List<PetLine>

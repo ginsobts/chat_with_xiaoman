@@ -136,7 +136,8 @@ namespace VN
             _inputLayer.gameObject.SetActive(false);
 
             // 历史记录按钮（右上角小 UI）
-            _historyButton = UITheme.AddButton("HistoryButton", _root, "历史", 28, OpenHistory);
+            _historyButton = UITheme.AddButton("HistoryButton", _root,
+                GameLanguage.IsEnglish ? "History" : "历史", 28, OpenHistory);
             UITheme.SetRect(_historyButton.GetComponent<RectTransform>(),
                 new Vector2(1f, 1f), new Vector2(1f, 1f),
                 new Vector2(-172, -92), new Vector2(-24, -24));
@@ -157,7 +158,7 @@ namespace VN
             dimBtn.transition = Selectable.Transition.None;
             dimBtn.onClick.AddListener(CloseHistory);
 
-            _historyTitle = UITheme.AddText("HistoryTitle", _historyLayer, "历史记录", 40,
+            _historyTitle = UITheme.AddText("HistoryTitle", _historyLayer, GameLanguage.HistoryTitle, 40,
                 Color.white, TextAnchor.MiddleCenter);
             UITheme.SetRect(_historyTitle.rectTransform,
                 new Vector2(0.5f, 1f), new Vector2(0.5f, 1f),
@@ -208,7 +209,7 @@ namespace VN
             fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             _historyScroll.content = _historyContent;
 
-            var back = UITheme.AddButton("HistoryBack", _historyLayer, "返回", 32, CloseHistory);
+            var back = UITheme.AddButton("HistoryBack", _historyLayer, GameLanguage.Back, 32, CloseHistory);
             UITheme.SetRect(back.GetComponent<RectTransform>(),
                 new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
                 new Vector2(-160, 40), new Vector2(160, 136));
@@ -546,7 +547,9 @@ namespace VN
             _inputField.textComponent = text;
 
             var placeholder = UITheme.AddText("Placeholder", inputImage.transform,
-                string.IsNullOrEmpty(_node.inputPlaceholder) ? "请输入文字" : _node.inputPlaceholder,
+                string.IsNullOrEmpty(_node.inputPlaceholder)
+                    ? (GameLanguage.IsEnglish ? "Enter text" : "请输入文字")
+                    : _node.inputPlaceholder,
                 32, new Color(0f, 0f, 0f, 0.35f), TextAnchor.MiddleLeft);
             UITheme.SetRect(placeholder.rectTransform,
                 new Vector2(0f, 0f), new Vector2(1f, 1f),
@@ -554,7 +557,9 @@ namespace VN
             _inputField.placeholder = placeholder;
 
             var button = UITheme.AddButton("ConfirmInput", panel.transform,
-                string.IsNullOrEmpty(_node.inputButtonText) ? "确定" : _node.inputButtonText,
+                string.IsNullOrEmpty(_node.inputButtonText)
+                    ? (GameLanguage.IsEnglish ? "OK" : "确定")
+                    : _node.inputButtonText,
                 30, ConfirmInput);
             UITheme.SetRect(button.GetComponent<RectTransform>(),
                 new Vector2(1f, 0f), new Vector2(1f, 1f),
@@ -567,7 +572,7 @@ namespace VN
         {
             string value = _inputField != null ? _inputField.text.Trim() : "";
             if (string.IsNullOrEmpty(value))
-                value = "你";
+                value = GameLanguage.DefaultPlayerName;
 
             _variables[_node.inputVariable] = value;
             Debug.Log("[VN Variable] " + _node.inputVariable + " = " + value);

@@ -1,0 +1,119 @@
+{
+  "speaker": "Xiaoman",
+  "portraitSprite": "true_gentle",
+  "sleepSprite": "true_quiet",
+  "sleepText": "... (She seems to have fallen asleep.) Zzz",
+  "switchButtonText": "Back to Pet",
+  "talkMinSeconds": 22,
+  "talkMaxSeconds": 48,
+  "sleepAfterSeconds": 120,
+  "enter": [
+    {
+      "text": "I will stay with you in another way. Sitting down like this feels more like we are chatting, right?",
+      "voice": "avg_enter_1",
+      "sprite": "true_gentle"
+    }
+  ],
+  "lines": [
+    {
+      "text": "I am always here. If you look back, you will see me.",
+      "voice": "avg_line_1",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "You do your thing. I will quietly watch and not disturb you.",
+      "voice": "avg_line_2",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "Honestly... I am still happy that you found the real me.",
+      "voice": "avg_line_3",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "If you miss me, click the lower right and turn me back into the desktop pet.",
+      "voice": "avg_line_4",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "Is it raining outside? Do not get soaked.",
+      "voice": "avg_line_5",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "You worked hard today. Drink some water and rest a little.",
+      "voice": "avg_line_6",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "If you suddenly go quiet, I will think you are listening carefully.",
+      "voice": "avg_line_7",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "Thank you for not closing me.",
+      "voice": "avg_line_8",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "If you are tired, lean back for a while. I am here; no need to rush.",
+      "voice": "avg_line_9",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "Every time you come back, I secretly get happy.",
+      "voice": "avg_line_10",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "The light outside the window has changed. Another day is slowly passing.",
+      "voice": "avg_line_11",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "Do not stare at the screen forever. Look into the distance and rest your eyes.",
+      "voice": "avg_line_12",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "Even if you say nothing, I like staying together like this.",
+      "voice": "avg_line_13",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "Remember to eat. Do not get so busy that you forget the time again.",
+      "voice": "avg_line_14",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "If today is a little hard, imagine I am here helping you carry it for a while.",
+      "voice": "avg_line_15",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "I will not go away. Whenever you look over, I will be here.",
+      "voice": "avg_line_16",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "Take a deep breath. Slowly. It is okay.",
+      "voice": "avg_line_17",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "You look pretty nice when you are focused.",
+      "voice": "avg_line_18",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "If it is late, remember to leave yourself some time to rest.",
+      "voice": "avg_line_19",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "Being able to stay beside you is already enough for me.",
+      "voice": "avg_line_20",
+      "sprite": "true_gentle"
+    }
+  ]
+}

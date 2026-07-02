@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -35,7 +36,7 @@ namespace VN
         {
             EnsureCamera();
             BuildCanvas();
-            Story = StoryLoader.Load();
+            Story = StoryLoader.Load(GameLanguage.MainStoryFile);
             State = SaveSystem.Load();
 
             // 决定进入哪个界面。
@@ -44,7 +45,7 @@ namespace VN
                 if (SaveSystem.Tampered)
                     ShowTamperEasterEgg();
                 else
-                    ShowLockedScreen("……这个故事已经结束了。\n\n你做出的选择，无法收回。");
+                    ShowLockedScreen(GameLanguage.LockedEnding);
             }
             else if (State.petMode)
             {
@@ -182,7 +183,7 @@ namespace VN
             Debug.Log("[GameManager] 连按 M 三次：回到游戏开头。");
             SaveSystem.DevResetAll();          // 清除 pet/lock 标记，成为干净的重新开始
             State = new SaveState();
-            Story = StoryLoader.Load();         // 重新加载主线 story.json（防止之前切到了 story_true）
+            Story = StoryLoader.Load(GameLanguage.MainStoryFile); // 重新加载主线（防止之前切到了 true story）
             ClearScreen();
             LeaveOverlayMode();                 // 还原窗口（撤销桌宠的透明置顶/点击穿透），否则回开头后点不动
             OnStartGame();
@@ -204,30 +205,80 @@ namespace VN
         public void ShowMainMenu()
         {
             ClearScreen();
-            MainMenuUI.Build(Root, OnStartGame, QuitGame, Story != null);
+            MainMenuUI.Build(Root, OnStartGame, QuitGame, ToggleLanguageOnMenu, Story != null);
+        }
+
+        private void ToggleLanguageOnMenu()
+        {
+            GameLanguage.Toggle();
+            Story = StoryLoader.Load(GameLanguage.MainStoryFile);
+            ShowMainMenu();
         }
 
         private void OnStartGame()
         {
             if (Story == null)
             {
-                ShowLockedScreen("找不到剧本文件 story.json。\n请检查 StreamingAssets 目录。");
+                ShowLockedScreen(GameLanguage.MissingStoryDetail);
                 return;
             }
             ClearScreen();
+            StartCoroutine(OpeningIntroThenStartStory());
+        }
+
+        private IEnumerator OpeningIntroThenStartStory()
+        {
+            var panel = UITheme.AddImage("OpeningIntro", Root, Color.black);
+            UITheme.FullStretch(panel.rectTransform);
+
+            var group = panel.gameObject.AddComponent<CanvasGroup>();
+            group.alpha = 0f;
+            group.blocksRaycasts = true;
+
+            var text = UITheme.AddText("OpeningIntroText", panel.transform,
+                GameLanguage.OpeningIntro,
+                36, Color.white, TextAnchor.MiddleCenter);
+            text.raycastTarget = false;
+            text.lineSpacing = 1.25f;
+            UITheme.SetRect(text.rectTransform,
+                new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
+                new Vector2(-640, -220), new Vector2(640, 220));
+
+            yield return FadeCanvasGroup(group, 0f, 1f, 1.2f);
+            yield return new WaitForSeconds(2.8f);
+            yield return FadeCanvasGroup(group, 1f, 0f, 1.0f);
+            Destroy(panel.gameObject);
+
+            StartStoryView(Story, Story.startNode);
+        }
+
+        private IEnumerator FadeCanvasGroup(CanvasGroup group, float from, float to, float seconds)
+        {
+            float t = 0f;
+            while (t < seconds)
+            {
+                t += Time.deltaTime;
+                group.alpha = Mathf.Lerp(from, to, Mathf.Clamp01(t / seconds));
+                yield return null;
+            }
+            group.alpha = to;
+        }
+
+        private void StartStoryView(StoryData story, string startNode)
+        {
             var vnGO = new GameObject("VNView");
             vnGO.transform.SetParent(transform, false);
             _vn = vnGO.AddComponent<VNView>();
-            _vn.Begin(Story, Story.startNode, OnEnding);
+            _vn.Begin(story, startNode, OnEnding);
         }
 
         // 从当前剧本切换到另一个剧本文件，从 entryNode 开始（空=新剧本 startNode），携带已有变量。
         public void SwitchStory(string storyFile, string entryNode, System.Collections.Generic.Dictionary<string, string> variables)
         {
-            var data = StoryLoader.Load(storyFile);
+            var data = StoryLoader.Load(GameLanguage.LocalizedJson(storyFile));
             if (data == null)
             {
-                ShowLockedScreen("找不到剧本文件 " + storyFile + "。");
+                ShowLockedScreen(GameLanguage.MissingStoryFile(storyFile));
                 return;
             }
 
@@ -263,7 +314,7 @@ namespace VN
             {
                 State.locked = true;
                 SaveSystem.Save(State);
-                ShowLockedScreen("再见。\n\n这一次，是永别。");
+                ShowLockedScreen(GameLanguage.LockedFarewell);
             }
             else
             {
@@ -323,11 +374,11 @@ namespace VN
                 _vn = vnGO.AddComponent<VNView>();
                 // 彩蛋播放完毕仍回到锁定界面，进度不回退。
                 _vn.Begin(Story, Story.tamperNode, _ =>
-                    ShowLockedScreen("你删掉了那个文件。\n\n但我还在。\n\n结局不会改变。"));
+                    ShowLockedScreen(GameLanguage.TamperDeletedFile));
             }
             else
             {
-                ShowLockedScreen("你删掉了那个文件……\n\n但我记得你做过的一切。\n结局不会改变。");
+                ShowLockedScreen(GameLanguage.TamperRemembered);
             }
         }
 
