@@ -23,18 +23,18 @@ namespace VN
             var startBtn = UITheme.AddButton("StartBtn", root, GameLanguage.MainMenuStart, 40, onStart);
             UITheme.SetRect(startBtn.GetComponent<RectTransform>(),
                 new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
-                new Vector2(-220, 180), new Vector2(220, 270));
+                new Vector2(-220, 280), new Vector2(220, 365));
             startBtn.interactable = storyOk;
 
             var langBtn = UITheme.AddButton("LanguageBtn", root, GameLanguage.LanguageButton, 30, onToggleLanguage);
             UITheme.SetRect(langBtn.GetComponent<RectTransform>(),
                 new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
-                new Vector2(-220, 70), new Vector2(220, 150));
+                new Vector2(-220, 175), new Vector2(220, 255));
 
             var quitBtn = UITheme.AddButton("QuitBtn", root, GameLanguage.MainMenuQuit, 36, onQuit);
             UITheme.SetRect(quitBtn.GetComponent<RectTransform>(),
                 new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
-                new Vector2(-220, -35), new Vector2(220, 45));
+                new Vector2(-220, 70), new Vector2(220, 150));
 
             if (!storyOk)
             {
@@ -42,7 +42,7 @@ namespace VN
                     GameLanguage.MissingStory, 28, new Color(0.9f, 0.4f, 0.4f), TextAnchor.MiddleCenter);
                 UITheme.SetRect(warn.rectTransform,
                     new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
-                    new Vector2(-400, 60), new Vector2(400, 120));
+                    new Vector2(-400, 375), new Vector2(400, 435));
             }
         }
     }

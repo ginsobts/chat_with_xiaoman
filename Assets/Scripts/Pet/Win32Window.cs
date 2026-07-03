@@ -89,6 +89,7 @@ namespace VN
 #endif
         }
 
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
         private static IntPtr ResolveUnityWindow()
         {
             IntPtr hwnd = GetActiveWindow();
@@ -102,6 +103,7 @@ namespace VN
                 process.Refresh();
             return process.MainWindowHandle;
         }
+#endif
 
         /// <summary>
         /// 退出桌宠/AVG 悬浮形态、回到普通游戏时调用：
@@ -133,12 +135,14 @@ namespace VN
 #endif
         }
 
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
         private static void RefreshTaskbarButton()
         {
             // Windows 通常只在窗口重新 show 时刷新任务栏按钮归属。
             ShowWindow(_hwnd, SW_HIDE);
             ShowWindow(_hwnd, SW_SHOW);
         }
+#endif
 
         /// <summary>true=鼠标点击穿透到桌面；false=窗口接收点击。</summary>
         public static void SetClickThrough(bool clickThrough)
