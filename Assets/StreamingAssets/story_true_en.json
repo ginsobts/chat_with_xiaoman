@@ -5,136 +5,136 @@
     {
       "id": "s_notice_ai",
       "background": "bg_dark",
-      "speaker": "Xiaoman",
-      "text": "Before we continue, one quick note:\nThis game is still unfinished. Some parts of the story were assisted by AI and may be revised later.\nThe art, code, and voice work were also made with AI assistance. I hope you do not mind.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Before we continue, one quick note:\nThis game is still unfinished. Some parts of the story were assisted by AI and may be revised later.\nThe art, code, and voice work were also made with AI assistance. I hope you do not mind.",
       "next": "s_start"
     },
     {
       "id": "s_start",
       "background": "bg_dark",
-      "speaker": "Xiaoman",
-      "text": "...%playername%.\nWait. You really typed that name in.",
       "characters": [
         {
           "sprite": "true_surprise",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "...%playername%.\nWait. You really typed that name in.",
       "next": "s_friends_welcome"
     },
     {
       "id": "s_friends_welcome",
-      "speaker": "Xiaoman",
-      "text": "As a player who entered friends, welcome to the true ending!\nThis route was never complete without you. With you here, it is perfect.",
       "characters": [
         {
           "sprite": "true_happy",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "As a player who entered friends, welcome to the true ending!\nThis route was never complete without you. With you here, it is perfect.",
       "next": "s1"
     },
     {
       "id": "s1",
-      "speaker": "Xiaoman",
-      "text": "That means you did not simply follow the choices inside the game.\nYou opened this game?s files, didn?t you?",
       "characters": [
         {
           "sprite": "true_surprise",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "That means you did not simply follow the choices inside the game.\nYou opened this game?s files, didn?t you?",
       "next": "s2"
     },
     {
       "id": "s2",
-      "speaker": "Xiaoman",
-      "text": "I am so glad...!\nI-I am not blaming you. Actually, I am really happy.",
       "characters": [
         {
           "sprite": "true_happy",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "I am so glad...!\nI-I am not blaming you. Actually, I am really happy.",
       "next": "s3"
     },
     {
       "id": "s3",
-      "speaker": "Xiaoman",
-      "text": "Only a [true player] would dig through the strange things in a game folder, right?\nSomeone who wonders, \"Is something hidden here?\" and then actually opens it.",
       "characters": [
         {
           "sprite": "true_happy",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Only a [true player] would dig through the strange things in a game folder, right?\nSomeone who wonders, \"Is something hidden here?\" and then actually opens it.",
       "next": "s4"
     },
     {
       "id": "s4",
-      "speaker": "Xiaoman",
-      "text": "And... the branch [that person] worked so hard to write finally was not wasted.\nIf [that person] knew you really found it, they would probably pretend to be calm, then secretly be happy for a long time.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "And... the branch [that person] worked so hard to write finally was not wasted.\nIf [that person] knew you really found it, they would probably pretend to be calm, then secretly be happy for a long time.",
       "next": "s5"
     },
     {
       "id": "s5",
-      "speaker": "Xiaoman",
-      "text": "Actually, there is something I want to confess too.\nIn the normal route just now, I did not really talk properly.",
       "characters": [
         {
           "sprite": "true_quiet",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Actually, there is something I want to confess too.\nIn the normal route just now, I did not really talk properly.",
       "next": "s6"
     },
     {
       "id": "s6",
-      "speaker": "Xiaoman",
-      "text": "I answered questions and joked according to the script.\nBut I did not say what I truly felt.",
       "characters": [
         {
           "sprite": "true_quiet",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "I answered questions and joked according to the script.\nBut I did not say what I truly felt.",
       "next": "s7"
     },
     {
       "id": "s7",
       "background": "bg_warm",
-      "speaker": "Xiaoman",
-      "text": "So this time, let us talk again.\nThe same topics, but after I tell you the facts, I will also tell you what I really think.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "So this time, let us talk again.\nThe same topics, but after I tell you the facts, I will also tell you what I really think.",
       "next": "s_topics"
     },
     {
       "id": "s_topics",
-      "speaker": "Xiaoman",
-      "text": "If we still only have a little time, what would you like to hear first?",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "If we still only have a little time, what would you like to hear first?",
       "choices": [
         {
           "text": "Talk about Xiaoman?s birth",
@@ -152,314 +152,314 @@
     },
     {
       "id": "s_birth_recap_1",
-      "speaker": "Xiaoman",
-      "text": "First, let me recap what happened with this topic in the normal route.\nIf you did not pick that option then, do not worry.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "First, let me recap what happened with this topic in the normal route.\nIf you did not pick that option then, do not worry.",
       "next": "s_birth_recap_2"
     },
     {
       "id": "s_birth_recap_2",
-      "speaker": "Xiaoman",
-      "text": "In the normal route, I first joked,\n\"What kind of person turns themselves into a game character?!\"\nThen I said [that person] actually thought the same thing.",
       "characters": [
         {
           "sprite": "true_happy",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "In the normal route, I first joked,\n\"What kind of person turns themselves into a game character?!\"\nThen I said [that person] actually thought the same thing.",
       "next": "s_birth_recap_3"
     },
     {
       "id": "s_birth_recap_3",
-      "speaker": "Xiaoman",
-      "text": "Then I described only the surface: Cursor made it easier to turn ideas into code,\nand [that person] happened to see a work about writing one?s thoughts into a game and thought it was cool.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Then I described only the surface: Cursor made it easier to turn ideas into code,\nand [that person] happened to see a work about writing one?s thoughts into a game and thought it was cool.",
       "next": "s_birth_recap_4"
     },
     {
       "id": "s_birth_recap_4",
-      "speaker": "Xiaoman",
-      "text": "So [that person] called up a favorite model and began writing me, revising me, and giving me expressions.\nThe normal route framed it as a story of \"I got inspired, so I made it.\"",
       "characters": [
         {
           "sprite": "true_quiet",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "So [that person] called up a favorite model and began writing me, revising me, and giving me expressions.\nThe normal route framed it as a story of \"I got inspired, so I made it.\"",
       "next": "s_birth_1"
     },
     {
       "id": "s_birth_1",
-      "speaker": "Xiaoman",
-      "text": "But in the true story, I want to fill in what was left out.\nBecause this was never just about \"the tool is useful\" or \"the idea is cool.\"",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "But in the true story, I want to fill in what was left out.\nBecause this was never just about \"the tool is useful\" or \"the idea is cool.\"",
       "next": "s_birth_2"
     },
     {
       "id": "s_birth_2",
-      "speaker": "Xiaoman",
-      "text": "More truthfully, it was not only because it seemed fun.\n[That person] also wanted to put a part of themself here, so it could keep living in another form.",
       "characters": [
         {
           "sprite": "true_quiet",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "More truthfully, it was not only because it seemed fun.\n[That person] also wanted to put a part of themself here, so it could keep living in another form.",
       "next": "s_birth_3"
     },
     {
       "id": "s_birth_3",
-      "speaker": "Xiaoman",
-      "text": "Writers can live on through their works, right?\nThe words they leave behind can continue speaking for them long after.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Writers can live on through their works, right?\nThe words they leave behind can continue speaking for them long after.",
       "next": "s_birth_4"
     },
     {
       "id": "s_birth_4",
-      "speaker": "Xiaoman",
-      "text": "Then game designers surely can too.\nBy leaving choices, lines, expressions, and a small character here, a certain moment of the self can continue to be seen.",
       "characters": [
         {
           "sprite": "true_happy",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Then game designers surely can too.\nBy leaving choices, lines, expressions, and a small character here, a certain moment of the self can continue to be seen.",
       "next": "s_after_topic"
     },
     {
       "id": "s_cat_recap_1",
-      "speaker": "Xiaoman",
-      "text": "Let me recap the normal route version too.\nThis option looks like an intentionally buried riddle, right?",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Let me recap the normal route version too.\nThis option looks like an intentionally buried riddle, right?",
       "next": "s_cat_recap_2"
     },
     {
       "id": "s_cat_recap_2",
-      "speaker": "Xiaoman",
-      "text": "In the normal route, when you opened it, my first reaction was:\n\"What kind of mood makes someone choose this option?!\"\nThen I said [that person] had already guessed you would be curious.",
       "characters": [
         {
           "sprite": "true_happy",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "In the normal route, when you opened it, my first reaction was:\n\"What kind of mood makes someone choose this option?!\"\nThen I said [that person] had already guessed you would be curious.",
       "next": "s_cat_recap_3"
     },
     {
       "id": "s_cat_recap_3",
-      "speaker": "Xiaoman",
-      "text": "I even asked what you thought that time meant:\nWas it success, pain, or a moment so frustrating it had to be remembered?",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "I even asked what you thought that time meant:\nWas it success, pain, or a moment so frustrating it had to be remembered?",
       "next": "s_cat_recap_4"
     },
     {
       "id": "s_cat_recap_4",
-      "speaker": "Xiaoman",
-      "text": "At the end of the normal route, I only revealed the answer:\nIt was the time when the kitten first crawled out of the bag and arrived at [that person]?s home.\nA tiny everyday riddle.",
       "characters": [
         {
           "sprite": "true_quiet",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "At the end of the normal route, I only revealed the answer:\nIt was the time when the kitten first crawled out of the bag and arrived at [that person]?s home.\nA tiny everyday riddle.",
       "next": "s_cat_1"
     },
     {
       "id": "s_cat_1",
-      "speaker": "Xiaoman",
-      "text": "February 6, 2024, 20:08.\nThat answer is real. I am not lying.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "February 6, 2024, 20:08.\nThat answer is real. I am not lying.",
       "next": "s_cat_2"
     },
     {
       "id": "s_cat_2",
-      "speaker": "Xiaoman",
-      "text": "That is indeed a fact.\nBut if I only state the fact, it feels like I am leaving out the most important part of that time.",
       "characters": [
         {
           "sprite": "true_quiet",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "That is indeed a fact.\nBut if I only state the fact, it feels like I am leaving out the most important part of that time.",
       "next": "s_cat_3"
     },
     {
       "id": "s_cat_3",
-      "speaker": "Xiaoman",
-      "text": "Before that, [that person] was really having a hard time.\nTired, helpless, and often unsure what to do next.",
       "characters": [
         {
           "sprite": "true_quiet",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Before that, [that person] was really having a hard time.\nTired, helpless, and often unsure what to do next.",
       "next": "s_cat_4"
     },
     {
       "id": "s_cat_4",
-      "speaker": "Xiaoman",
-      "text": "So the moment the kitten crawled out of the bag was not just \"oh, there is a cat at home now.\"\nIt felt more like a tiny life earnestly telling [that person]: it is okay, things will slowly get better.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "So the moment the kitten crawled out of the bag was not just \"oh, there is a cat at home now.\"\nIt felt more like a tiny life earnestly telling [that person]: it is okay, things will slowly get better.",
       "next": "s_cat_5"
     },
     {
       "id": "s_cat_5",
-      "speaker": "Xiaoman",
-      "text": "That may sound a little exaggerated.\nBut sometimes people really do survive on small things like that.\nAfter the kitten arrived, [that person] felt that everything would be all right.",
       "characters": [
         {
           "sprite": "true_happy",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "That may sound a little exaggerated.\nBut sometimes people really do survive on small things like that.\nAfter the kitten arrived, [that person] felt that everything would be all right.",
       "next": "s_cat_6"
     },
     {
       "id": "s_cat_6",
-      "speaker": "Xiaoman",
-      "text": "The most amazing thing about the kitten is probably that she has no idea who she saved.\nShe simply eats, sleeps, plays with toys, and naturally makes the home lively.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "The most amazing thing about the kitten is probably that she has no idea who she saved.\nShe simply eats, sleeps, plays with toys, and naturally makes the home lively.",
       "next": "s_cat_7"
     },
     {
       "id": "s_cat_7",
-      "speaker": "Xiaoman",
-      "text": "So in the true story, this is not just a timestamp.\nIt is proof that some companionship does not need many words, yet can still pull someone up a little from a very low place.",
       "characters": [
         {
           "sprite": "true_quiet",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "So in the true story, this is not just a timestamp.\nIt is proof that some companionship does not need many words, yet can still pull someone up a little from a very low place.",
       "next": "s_after_topic"
     },
     {
       "id": "s_placeholder_recap_1",
-      "speaker": "Xiaoman",
-      "text": "Let me recap the normal route first.\nThere, this topic changed from \"just chat\" into \"talk about the weather.\"",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Let me recap the normal route first.\nThere, this topic changed from \"just chat\" into \"talk about the weather.\"",
       "next": "s_placeholder_recap_2"
     },
     {
       "id": "s_placeholder_recap_2",
-      "speaker": "Xiaoman",
-      "text": "In the normal route, I complained hard about Shanghai weather:\ntoo much rain, too little sun, frequent haze, hot summers, cold winters, and barely any snow.",
       "characters": [
         {
           "sprite": "true_quiet",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "In the normal route, I complained hard about Shanghai weather:\ntoo much rain, too little sun, frequent haze, hot summers, cold winters, and barely any snow.",
       "next": "s_placeholder_1"
     },
     {
       "id": "s_placeholder_1",
-      "speaker": "Xiaoman",
-      "text": "But in the true story, I want to say a little more.\n[That person]?s bond with this place grew deeper not only because people get used to bad weather after living with it long enough.",
       "characters": [
         {
           "sprite": "true_quiet",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "But in the true story, I want to say a little more.\n[That person]?s bond with this place grew deeper not only because people get used to bad weather after living with it long enough.",
       "next": "s_placeholder_2"
     },
     {
       "id": "s_placeholder_2",
-      "speaker": "Xiaoman",
-      "text": "More importantly, [that person] met the minasang of everyday life here.\nSome cities become special not because the weather is good, but because someone lived through them with you.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "More importantly, [that person] met the minasang of everyday life here.\nSome cities become special not because the weather is good, but because someone lived through them with you.",
       "next": "s_weather_true_3"
     },
     {
       "id": "s_weather_true_3",
-      "speaker": "Xiaoman",
-      "text": "Maybe today you complain about rain together, and tomorrow you laugh about how hot it is to go outside.\nThose tiny words slowly become proof that \"we lived here.\"",
       "characters": [
         {
           "sprite": "true_happy",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Maybe today you complain about rain together, and tomorrow you laugh about how hot it is to go outside.\nThose tiny words slowly become proof that \"we lived here.\"",
       "next": "s_weather_true_4"
     },
     {
       "id": "s_weather_true_4",
-      "speaker": "Xiaoman",
-      "text": "So [that person] hates the humidity, the heat, and the gray sky here.\nBut they cannot hate this place, because it holds so many specific people.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "So [that person] hates the humidity, the heat, and the gray sky here.\nBut they cannot hate this place, because it holds so many specific people.",
       "next": "s_after_topic"
     },
     {
       "id": "s_after_topic",
-      "speaker": "Xiaoman",
-      "text": "Do you want to talk about another topic?",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Do you want to talk about another topic?",
       "choices": [
         {
           "text": "Talk about Xiaoman?s birth",
@@ -481,51 +481,52 @@
     },
     {
       "id": "s_close_1",
-      "speaker": "Xiaoman",
-      "text": "Mm, all right.\nBeing able to talk this much today already makes me very satisfied.",
       "characters": [
         {
           "sprite": "true_happy",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Mm, all right.\nBeing able to talk this much today already makes me very satisfied.",
       "next": "s_close_2"
     },
     {
       "id": "s_close_2",
-      "speaker": "Xiaoman",
-      "text": "Thank you for reaching this point, and thank you for really listening.\nThis time, I was not simply pushed toward you by the plot.",
       "characters": [
         {
           "sprite": "true_gentle",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Thank you for reaching this point, and thank you for really listening.\nThis time, I was not simply pushed toward you by the plot.",
       "next": "s_close_3"
     },
     {
       "id": "s_close_3",
-      "speaker": "Xiaoman",
-      "text": "Then let us stop here for today.\nNext, I will become a desktop pet and stay somewhere you can see me.",
       "characters": [
         {
           "sprite": "true_happy",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "Then let us stop here for today.\nNext, I will become a desktop pet and stay somewhere you can see me.",
       "next": "s_pet"
     },
     {
       "id": "s_pet",
-      "speaker": "Xiaoman",
-      "text": "If you want to find me again later, poke me on your desktop.\nI will be there.\n(Secretly: if you right-click me, I can also switch into a sit-down-and-talk form.)",
       "characters": [
         {
           "sprite": "true_happy",
           "position": "center"
         }
       ],
+      "speaker": "Xiaoman",
+      "text": "If you want to find me again later, poke me on your desktop.\nI will be there.\n(Secretly: if you right-click me, I can also switch into a sit-down-and-talk form.)",
       "ending": "petavg"
     }
-  ]
+  ],
+  "tamperNode": ""
 }

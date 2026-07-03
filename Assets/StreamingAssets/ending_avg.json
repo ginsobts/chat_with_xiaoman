@@ -1,8 +1,4 @@
 {
-  // true 线结局解锁的“悬浮 AVG 对话框”形态的对白配置。
-  // 逻辑：进入时说 enter 里的一句，之后每隔 talkMin~talkMax 秒随机说 lines 里的一句；
-  // 玩家 sleepAfterSeconds 秒不操作会睡着（用 sleepSprite 占位立绘）。
-  // 对话框右下角按钮可切回桌宠形态；右键桌宠也能切回来。
   "speaker": "小满",
   "portraitSprite": "true_gentle",
   "sleepSprite": "true_quiet",
@@ -11,31 +7,113 @@
   "talkMinSeconds": 22,
   "talkMaxSeconds": 48,
   "sleepAfterSeconds": 120,
-
   "enter": [
-    { "text": "换个方式陪你——这样坐下来说话，是不是更像我们在聊天？", "voice": "avg_enter_1", "sprite": "true_gentle" }
+    {
+      "text": "换个方式陪你——这样坐下来说话，是不是更像我们在聊天？",
+      "voice": "avg_enter_1",
+      "sprite": "true_gentle"
+    }
   ],
-
   "lines": [
-    { "text": "我一直都在这儿，你回头就能看见我。", "voice": "avg_line_1", "sprite": "true_gentle" },
-    { "text": "你忙你的，我就安安静静看着你，不打扰。", "voice": "avg_line_2", "sprite": "true_quiet" },
-    { "text": "其实……被你找到真正的我，我到现在都还是很开心。", "voice": "avg_line_3", "sprite": "true_happy" },
-    { "text": "想我了就点右下角，让我变回桌宠也可以哦。", "voice": "avg_line_4", "sprite": "true_happy" },
-    { "text": "外面下雨了吗？记得别淋着。", "voice": "avg_line_5", "sprite": "true_gentle" },
-    { "text": "今天也辛苦啦，喝口水，歇一会儿。", "voice": "avg_line_6", "sprite": "true_gentle" },
-    { "text": "如果你突然安静下来，我会以为你在认真听我说话呢。", "voice": "avg_line_7", "sprite": "true_quiet" },
-    { "text": "谢谢你没有把我关掉。", "voice": "avg_line_8", "sprite": "true_happy" },
-    { "text": "累了就靠一会儿，我陪着你，不用急。", "voice": "avg_line_9", "sprite": "true_gentle" },
-    { "text": "你每次回来，我都会偷偷高兴一下。", "voice": "avg_line_10", "sprite": "true_happy" },
-    { "text": "窗外的光变了呢，一天又要慢慢过去了。", "voice": "avg_line_11", "sprite": "true_quiet" },
-    { "text": "别老盯着屏幕啦，抬头看看远处，让眼睛歇歇。", "voice": "avg_line_12", "sprite": "true_gentle" },
-    { "text": "就算你什么都不说，我也很喜欢这样待在一起。", "voice": "avg_line_13", "sprite": "true_quiet" },
-    { "text": "记得吃饭哦，别又忙到忘了时间。", "voice": "avg_line_14", "sprite": "true_gentle" },
-    { "text": "如果今天有点难熬，就当我在这儿陪你扛一会儿。", "voice": "avg_line_15", "sprite": "true_gentle" },
-    { "text": "我不会走开的，你随时看过来，我都在。", "voice": "avg_line_16", "sprite": "true_happy" },
-    { "text": "深呼吸一下，慢慢来，没关系的。", "voice": "avg_line_17", "sprite": "true_quiet" },
-    { "text": "你认真做事的样子，其实挺好看的。", "voice": "avg_line_18", "sprite": "true_happy" },
-    { "text": "夜深了的话，记得给自己留点休息的时间。", "voice": "avg_line_19", "sprite": "true_quiet" },
-    { "text": "能陪在你身边，对我来说已经很足够了。", "voice": "avg_line_20", "sprite": "true_gentle" }
+    {
+      "text": "我一直都在这儿，你回头就能看见我。",
+      "voice": "avg_line_1",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "你忙你的，我就安安静静看着你，不打扰。",
+      "voice": "avg_line_2",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "其实……被你找到真正的我，我到现在都还是很开心。",
+      "voice": "avg_line_3",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "想我了就点右下角，让我变回桌宠也可以哦。",
+      "voice": "avg_line_4",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "外面下雨了吗？记得别淋着。",
+      "voice": "avg_line_5",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "今天也辛苦啦，喝口水，歇一会儿。",
+      "voice": "avg_line_6",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "如果你突然安静下来，我会以为你在认真听我说话呢。",
+      "voice": "avg_line_7",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "谢谢你没有把我关掉。",
+      "voice": "avg_line_8",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "累了就靠一会儿，我陪着你，不用急。",
+      "voice": "avg_line_9",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "你每次回来，我都会偷偷高兴一下。",
+      "voice": "avg_line_10",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "窗外的光变了呢，一天又要慢慢过去了。",
+      "voice": "avg_line_11",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "别老盯着屏幕啦，抬头看看远处，让眼睛歇歇。",
+      "voice": "avg_line_12",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "就算你什么都不说，我也很喜欢这样待在一起。",
+      "voice": "avg_line_13",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "记得吃饭哦，别又忙到忘了时间。",
+      "voice": "avg_line_14",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "如果今天有点难熬，就当我在这儿陪你扛一会儿。",
+      "voice": "avg_line_15",
+      "sprite": "true_gentle"
+    },
+    {
+      "text": "我不会走开的，你随时看过来，我都在。",
+      "voice": "avg_line_16",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "深呼吸一下，慢慢来，没关系的。",
+      "voice": "avg_line_17",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "你认真做事的样子，其实挺好看的。",
+      "voice": "avg_line_18",
+      "sprite": "true_happy"
+    },
+    {
+      "text": "夜深了的话，记得给自己留点休息的时间。",
+      "voice": "avg_line_19",
+      "sprite": "true_quiet"
+    },
+    {
+      "text": "能陪在你身边，对我来说已经很足够了。",
+      "voice": "avg_line_20",
+      "sprite": "true_gentle"
+    }
   ]
 }

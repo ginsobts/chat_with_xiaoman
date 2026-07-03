@@ -48,3 +48,19 @@ desktop.ini
 /tools/tts/output/
 /tools/tts/tmp/
 /tools/butler/
+
+# 文本表格工具的备份（导入时自动生成）
+/tools/text_table/backups/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 本地隐私素材：语音参考样本 / 别人发来的参考图等，不上传 git
+/reference/
+/references/
+/ref/
+/参考/
+/参考图/
+/tools/tts/ref/
+/tools/tts/reference/

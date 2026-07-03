@@ -1,6 +1,7 @@
 using UnityEngine;
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 #endif
 
@@ -20,6 +21,8 @@ namespace VN
         private const int WS_EX_LAYERED = 0x00080000;
         private const int WS_EX_TRANSPARENT = 0x00000020;
         private const int WS_EX_TOPMOST = 0x00000008;
+        private const int WS_EX_TOOLWINDOW = 0x00000080;
+        private const int WS_EX_APPWINDOW = 0x00040000;
 
         private static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
         private static readonly IntPtr HWND_NOTOPMOST = new IntPtr(-2);
@@ -27,6 +30,8 @@ namespace VN
         private const uint SWP_NOMOVE = 0x0002;
         private const uint SWP_FRAMECHANGED = 0x0020;
         private const uint SWP_SHOWWINDOW = 0x0040;
+        private const int SW_HIDE = 0;
+        private const int SW_SHOW = 5;
 
         [StructLayout(LayoutKind.Sequential)]
         private struct MARGINS { public int left, right, top, bottom; }
@@ -39,10 +44,12 @@ namespace VN
         }
 
         [DllImport("user32.dll")] private static extern IntPtr GetActiveWindow();
+        [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
         [DllImport("user32.dll")] private static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
         [DllImport("user32.dll")] private static extern uint GetWindowLong(IntPtr hWnd, int nIndex);
         [DllImport("user32.dll")] private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter,
             int X, int Y, int cx, int cy, uint uFlags);
+        [DllImport("user32.dll")] private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         [DllImport("user32.dll")] private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
         [DllImport("kernel32.dll")] private static extern uint GetTickCount();
         [DllImport("Dwmapi.dll")] private static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS m);
@@ -55,14 +62,20 @@ namespace VN
         public static void MakeTransparentOverlay(int width = 0, int height = 0)
         {
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
-            _hwnd = GetActiveWindow();
+            _hwnd = ResolveUnityWindow();
+            if (_hwnd == IntPtr.Zero)
+            {
+                UnityEngine.Debug.LogWarning("[Win32Window] 找不到 Unity 窗口句柄，无法启用桌宠透明窗口。");
+                return;
+            }
 
             // 无边框
             SetWindowLong(_hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
 
-            // 分层 + 置顶
-            _baseExStyle = WS_EX_LAYERED | WS_EX_TOPMOST;
+            // 分层 + 置顶 + 工具窗口：工具窗口不会显示在任务栏里。
+            _baseExStyle = WS_EX_LAYERED | WS_EX_TOPMOST | WS_EX_TOOLWINDOW;
             SetWindowLong(_hwnd, GWL_EXSTYLE, _baseExStyle);
+            RefreshTaskbarButton();
 
             // 逐像素透明：把 DWM 边框扩展到整个客户区
             var margins = new MARGINS { left = -1, right = -1, top = -1, bottom = -1 };
@@ -76,6 +89,20 @@ namespace VN
 #endif
         }
 
+        private static IntPtr ResolveUnityWindow()
+        {
+            IntPtr hwnd = GetActiveWindow();
+            if (hwnd != IntPtr.Zero) return hwnd;
+
+            hwnd = GetForegroundWindow();
+            if (hwnd != IntPtr.Zero) return hwnd;
+
+            var process = Process.GetCurrentProcess();
+            if (process.MainWindowHandle == IntPtr.Zero)
+                process.Refresh();
+            return process.MainWindowHandle;
+        }
+
         /// <summary>
         /// 退出桌宠/AVG 悬浮形态、回到普通游戏时调用：
         /// 撤销透明置顶和点击穿透，恢复成一个能正常接收点击的无边框窗口。
@@ -84,15 +111,16 @@ namespace VN
         public static void RestoreNormalWindow(int width = 0, int height = 0)
         {
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
-            if (_hwnd == IntPtr.Zero) _hwnd = GetActiveWindow();
+            if (_hwnd == IntPtr.Zero) _hwnd = ResolveUnityWindow();
             if (_hwnd == IntPtr.Zero) return;
 
             _clickThrough = false;
 
-            // 无边框但不再分层/穿透/置顶
+            // 无边框但不再分层/穿透/置顶，恢复普通应用窗口，使主游戏能重新出现在任务栏。
             SetWindowLong(_hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
-            _baseExStyle = 0;
-            SetWindowLong(_hwnd, GWL_EXSTYLE, 0);
+            _baseExStyle = WS_EX_APPWINDOW;
+            SetWindowLong(_hwnd, GWL_EXSTYLE, _baseExStyle);
+            RefreshTaskbarButton();
 
             // 撤销 DWM 玻璃扩展（否则透明区域仍会透出桌面）
             var margins = new MARGINS { left = 0, right = 0, top = 0, bottom = 0 };
@@ -103,6 +131,13 @@ namespace VN
             SetWindowPos(_hwnd, HWND_NOTOPMOST, 0, 0, sw, sh,
                 SWP_FRAMECHANGED | SWP_SHOWWINDOW);
 #endif
+        }
+
+        private static void RefreshTaskbarButton()
+        {
+            // Windows 通常只在窗口重新 show 时刷新任务栏按钮归属。
+            ShowWindow(_hwnd, SW_HIDE);
+            ShowWindow(_hwnd, SW_SHOW);
         }
 
         /// <summary>true=鼠标点击穿透到桌面；false=窗口接收点击。</summary>

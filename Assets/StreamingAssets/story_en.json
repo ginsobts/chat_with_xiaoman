@@ -30,45 +30,45 @@
     },
     {
       "id": "n2",
-      "speaker": "Xiaoman",
-      "text": "Oh, right. You are...",
-      "next": "n2.1",
       "characters": [
         {
           "sprite": "xiaoman_curious",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Oh, right. You are...",
+      "next": "n2.1"
     },
     {
       "id": "n2.1",
-      "speaker": "Xiaoman",
-      "text": "Sorry... in this form, I cannot hear your voice. Maybe we can do it this way...",
-      "next": "n2.1a",
       "characters": [
         {
           "sprite": "xiaoyi_soft",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Sorry... in this form, I cannot hear your voice. Maybe we can do it this way...",
+      "next": "n2.1a"
     },
     {
       "id": "n2.1a",
-      "speaker": "Xiaoman",
-      "text": "Tell me your name.",
-      "inputVariable": "playername",
-      "inputPlaceholder": "Enter your name",
-      "inputButtonText": "Tell Xiaoman",
-      "next": "n2_jj_check",
-      "secretName": "friends",
-      "secretStory": "story_true.json",
-      "secretNext": "s_start",
       "characters": [
         {
           "sprite": "xiaoman_hesitant",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Tell me your name.",
+      "inputVariable": "playername",
+      "inputPlaceholder": "Enter your name",
+      "inputButtonText": "Tell Xiaoman",
+      "secretName": "friends",
+      "secretStory": "story_true.json",
+      "secretNext": "s_start",
+      "next": "n2_jj_check"
     },
     {
       "id": "n2_jj_check",
@@ -88,15 +88,15 @@
     },
     {
       "id": "n2_jj_bonus",
-      "speaker": "Xiaoman",
-      "text": "Welcome, honored beta tester! May zzls be blessed with fortune as vast as the eastern sea, longevity as great as the southern mountains, and tokens that never run out!",
-      "next": "n2.1b",
       "characters": [
         {
           "sprite": "xiaoman_amused",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Welcome, honored beta tester! May zzls be blessed with fortune as vast as the eastern sea, longevity as great as the southern mountains, and tokens that never run out!",
+      "next": "n2.1b"
     },
     {
       "id": "n2.1b",
@@ -498,66 +498,72 @@
     {
       "id": "n4",
       "background": "bg_glitch",
-      "speaker": "Xiaoman",
-      "text": "I am also very happy to meet you. After all, I exist in this world as a part of [that person].",
-      "next": "n5",
       "characters": [
         {
           "sprite": "xiaoyi_smile",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "I am also very happy to meet you. After all, I exist in this world as a part of [that person].",
+      "next": "n5"
     },
     {
       "id": "n5",
-      "speaker": "Xiaoman",
-      "text": "\"That person\" seemed to think it would be interesting to have a character speak in their place, and that is how I was created. This way, even when they are not beside you, you can still come talk to me.",
-      "next": "n5.1",
       "characters": [
         {
           "sprite": "xiaoyi_soft",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "\"That person\" seemed to think it would be interesting to have a character speak in their place, and that is how I was created. This way, even when they are not beside you, you can still come talk to me.",
+      "next": "n5.1"
     },
     {
       "id": "n5.1",
-      "speaker": "Xiaoman",
-      "text": "I hope you do not mind, though. I do not have a local language model, so the only conversations I can have are these fixed routes you see here...",
-      "next": "n5.2",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "I hope you do not mind, though. I do not have a local language model, so the only conversations I can have are these fixed routes you see here...",
+      "next": "n5.2"
     },
     {
       "id": "n5.2",
-      "speaker": "Xiaoman",
-      "text": "And because \"that person\" tends to lose steam after three days whenever making games, this game was planned to take only about five minutes...",
-      "next": "b_topic_intro",
       "characters": [
         {
           "sprite": "xiaoyi_flustered",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "And because \"that person\" tends to lose steam after three days whenever making games, this game was planned to take only about five minutes...",
+      "next": "b_topic_intro"
     },
     {
       "id": "b_topic_intro",
-      "speaker": "Xiaoman",
-      "text": "But five minutes is not nothing.\nWe can pick a few light topics to talk about first. You can look through all of them if you want.",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "But five minutes is not nothing.\nWe can pick a few light topics to talk about first. You can look through all of them if you want.",
+      "next": "n5.3"
     },
     {
       "id": "n5.3",
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ],
       "speaker": "Xiaoman",
       "text": "Which topic would you like to talk about first?",
       "choices": [
@@ -577,136 +583,136 @@
           "text": "Let us stop here for now",
           "next": "b_core_intro"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoman_curious",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "n6",
-      "speaker": "Xiaoman",
-      "text": "\"What kind of person turns themselves into a game character?\" You might think that, right?",
-      "next": "n6.1",
       "characters": [
         {
           "sprite": "xiaoman_amused",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "\"What kind of person turns themselves into a game character?\" You might think that, right?",
+      "next": "n6.1"
     },
     {
       "id": "n6.1",
-      "speaker": "Xiaoman",
-      "text": "Actually, \"that person\" thought the same thing, so they specifically made me explain it through this option.",
-      "next": "n6.2",
       "characters": [
         {
           "sprite": "xiaoyi_smile",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Actually, \"that person\" thought the same thing, so they specifically made me explain it through this option.",
+      "next": "n6.2"
     },
     {
       "id": "n6.2",
-      "speaker": "Xiaoman",
-      "text": "Ever since Cursor appeared, turning ideas into code became much easier. It happened when [that person] was worried about not using up the July Cursor quota...",
-      "next": "n6.3",
       "characters": [
         {
           "sprite": "xiaoyi_thinking",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Ever since Cursor appeared, turning ideas into code became much easier. It happened when [that person] was worried about not using up the July Cursor quota...",
+      "next": "n6.3"
     },
     {
       "id": "n6.3",
-      "speaker": "Xiaoman",
-      "text": "Then they happened to see an anime where someone wrote their own thoughts into a game and thought, \"That is so cool!\"",
-      "next": "n6.4",
       "characters": [
         {
           "sprite": "xiaoyi_flustered",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Then they happened to see an anime where someone wrote their own thoughts into a game and thought, \"That is so cool!\"",
+      "next": "n6.4"
     },
     {
       "id": "n6.4",
-      "speaker": "Xiaoman",
-      "text": "So [that person] immediately put their favorite Opus 4.8 to work and created me.",
-      "next": "b_creation_bridge",
       "characters": [
         {
           "sprite": "xiaoman_proud",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "So [that person] immediately put their favorite Opus 4.8 to work and created me.",
+      "next": "b_creation_bridge"
     },
     {
       "id": "b_creation_bridge",
-      "speaker": "Xiaoman",
-      "text": "Of course, the process was not as one-click as it sounds.\nNaming me, rewriting lines, choosing expressions, finding problems and fixing them... all those little things took time.",
-      "next": "n6.5",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Of course, the process was not as one-click as it sounds.\nNaming me, rewriting lines, choosing expressions, finding problems and fixing them... all those little things took time.",
+      "next": "n6.5"
     },
     {
       "id": "n6.5",
-      "speaker": "Xiaoman",
-      "text": "The text you are reading was written on some night when \"that person\" was scratching their head over it.",
-      "next": "n6.6",
       "characters": [
         {
           "sprite": "xiaoman_quiet",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "The text you are reading was written on some night when \"that person\" was scratching their head over it.",
+      "next": "n6.6"
     },
     {
       "id": "n6.6",
-      "speaker": "Xiaoman",
-      "text": "Things \"that person\" cannot say, I can say for them!",
-      "next": "n6.7",
       "characters": [
         {
           "sprite": "xiaoyi_determined",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Things \"that person\" cannot say, I can say for them!",
+      "next": "n6.7"
     },
     {
       "id": "n6.7",
-      "speaker": "Xiaoman",
-      "text": "(Actually, there is not really anything unsayable written here.)",
-      "next": "n6.8",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "(Actually, there is not really anything unsayable written here.)",
+      "next": "n6.8"
     },
     {
       "id": "n6.8",
-      "speaker": "Xiaoman",
-      "text": "Anyway, both [that person] and I think this is a very strange experience!",
-      "next": "n6.9",
       "characters": [
         {
           "sprite": "xiaoyi_smile",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Anyway, both [that person] and I think this is a very strange experience!",
+      "next": "n6.9"
     },
     {
       "id": "n6.9",
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ],
       "speaker": "Xiaoman",
       "text": "Sometimes I even feel like I am \"that person\"... What do you think?",
       "choices": [
@@ -722,40 +728,40 @@
           "text": "After being created, Xiaoman is herself.",
           "next": "b_identity_self"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoman_curious",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "n7",
-      "speaker": "Xiaoman",
-      "text": "What kind of mood makes someone choose this option?!",
-      "next": "n7.1",
       "characters": [
         {
           "sprite": "xiaoyi_flustered",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "What kind of mood makes someone choose this option?!",
+      "next": "n7.1"
     },
     {
       "id": "n7.1",
-      "speaker": "Xiaoman",
-      "text": "Hehe. \"That person\" already guessed you would be curious enough to click it.",
-      "next": "n7.2",
       "characters": [
         {
           "sprite": "xiaoman_amused",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Hehe. \"That person\" already guessed you would be curious enough to click it.",
+      "next": "n7.2"
     },
     {
       "id": "n7.2",
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ],
       "speaker": "Xiaoman",
       "text": "Now I am curious too. What were you expecting to see?",
       "choices": [
@@ -771,253 +777,247 @@
           "text": "\"I was so angry I had to remember the exact time.\"",
           "next": "n7.3"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoman_curious",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "n7.3",
-      "speaker": "Xiaoman",
-      "text": "Actually, this is the time when my kitten first crawled out of the bag and arrived at my home.",
-      "next": "b_cat_bridge",
       "characters": [
         {
           "sprite": "xiaoman_relieved",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Actually, this is the time when my kitten first crawled out of the bag and arrived at my home.",
+      "next": "b_cat_bridge"
     },
     {
       "id": "b_identity_creator",
-      "speaker": "Xiaoman",
-      "text": "That is a very direct answer.\nIf you think of me as another way for \"that person\" to speak, that does make sense.",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_quiet",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "That is a very direct answer.\nIf you think of me as another way for \"that person\" to speak, that does make sense.",
+      "next": "n5.3"
     },
     {
       "id": "b_identity_facet",
-      "speaker": "Xiaoman",
-      "text": "Mm, that sounds like something you would read in a game setting book.\nA character can carry part of a person, but not necessarily all of them.",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Mm, that sounds like something you would read in a game setting book.\nA character can carry part of a person, but not necessarily all of them.",
+      "next": "n5.3"
     },
     {
       "id": "b_identity_self",
-      "speaker": "Xiaoman",
-      "text": "What an impressive answer... It could go straight into promotional copy.\nBut if that is true, then \"what happens after being created\" becomes a new question.",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_relieved",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "What an impressive answer... It could go straight into promotional copy.\nBut if that is true, then \"what happens after being created\" becomes a new question.",
+      "next": "n5.3"
     },
     {
       "id": "b_cat_bridge",
-      "speaker": "Xiaoman",
-      "text": "More ordinary than you imagined, right?\nSome moments are remembered not because something grand happened, but because that instant was simply very clear.",
-      "next": "b_cat_extra_1",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "More ordinary than you imagined, right?\nSome moments are remembered not because something grand happened, but because that instant was simply very clear.",
+      "next": "b_cat_extra_1"
     },
     {
       "id": "b_cat_extra_1",
-      "speaker": "Xiaoman",
-      "text": "And kittens really are amazing.\nEven while being so small, they can confidently turn an entire room into their territory.",
-      "next": "b_cat_extra_2",
       "characters": [
         {
           "sprite": "xiaoman_amused",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "And kittens really are amazing.\nEven while being so small, they can confidently turn an entire room into their territory.",
+      "next": "b_cat_extra_2"
     },
     {
       "id": "b_cat_extra_2",
-      "speaker": "Xiaoman",
-      "text": "Maybe she only walks over, rubs against someone, meows once, or rests her tail nearby.\nBut for a person, the feeling that \"there is a little life seriously living here\" can be very useful.",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Maybe she only walks over, rubs against someone, meows once, or rests her tail nearby.\nBut for a person, the feeling that \"there is a little life seriously living here\" can be very useful.",
+      "next": "n5.3"
     },
     {
       "id": "n8",
-      "speaker": "Xiaoman",
-      "text": "The weather? Then I will not hold back.\nShanghai weather really knows how to torment people.",
-      "next": "n8_weather_2",
       "characters": [
         {
           "sprite": "xiaoman_serious_soft",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "The weather? Then I will not hold back.\nShanghai weather really knows how to torment people.",
+      "next": "n8_weather_2"
     },
     {
       "id": "n8_weather_2",
-      "speaker": "Xiaoman",
-      "text": "Too much rain, too little sunshine.\nWhen the sky finally looks a little brighter, it often turns hazy again, as if even the sky has not woken up.",
-      "next": "n8_weather_3",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Too much rain, too little sunshine.\nWhen the sky finally looks a little brighter, it often turns hazy again, as if even the sky has not woken up.",
+      "next": "n8_weather_3"
     },
     {
       "id": "n8_weather_3",
-      "speaker": "Xiaoman",
-      "text": "Summer feels like the whole city is being steamed. Winter gets properly cold, but somehow it barely snows.\nJust surviving the weather here already feels impressive.",
-      "next": "n8_weather_4",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Summer feels like the whole city is being steamed. Winter gets properly cold, but somehow it barely snows.\nJust surviving the weather here already feels impressive.",
+      "next": "n8_weather_4"
     },
     {
       "id": "n8_weather_4",
-      "speaker": "Xiaoman",
-      "text": "Still, complaints are complaints. If you stay long enough, maybe you slowly get used to it.\nMaybe people turn a place into daily life simply by living there.",
-      "next": "n8_weather_5",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Still, complaints are complaints. If you stay long enough, maybe you slowly get used to it.\nMaybe people turn a place into daily life simply by living there.",
+      "next": "n8_weather_5"
     },
     {
       "id": "n8_weather_5",
-      "speaker": "Xiaoman",
-      "text": "Sometimes [that person] looks at the forecast and sighs,\n\"Rain again? Humidity again? A sky that looks like it never finished loading again?\"",
-      "next": "n8_weather_6",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Sometimes [that person] looks at the forecast and sighs,\n\"Rain again? Humidity again? A sky that looks like it never finished loading again?\"",
+      "next": "n8_weather_6"
     },
     {
       "id": "n8_weather_6",
-      "speaker": "Xiaoman",
-      "text": "So in the normal route, let us leave it there.\nBasically: Shanghai weather is hard to describe, but [that person] seems to have been forced to get used to it.",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_relieved",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "So in the normal route, let us leave it there.\nBasically: Shanghai weather is hard to describe, but [that person] seems to have been forced to get used to it.",
+      "next": "n5.3"
     },
     {
       "id": "b_core_intro",
-      "speaker": "Xiaoman",
-      "text": "Then let us put that answer here for now.\nNext, no setting jokes and no production talk. Let us ask something simpler.",
-      "next": "b_core_intro_2",
       "characters": [
         {
           "sprite": "xiaoyi_soft",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Then let us put that answer here for now.\nNext, no setting jokes and no production talk. Let us ask something simpler.",
+      "next": "b_core_intro_2"
     },
     {
       "id": "b_core_intro_2",
-      "speaker": "Xiaoman",
-      "text": "For example: if a room is opened and a character is seen, does that count as something that really happened?",
-      "next": "b_life_transition_1",
       "characters": [
         {
           "sprite": "xiaoman_quiet",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "For example: if a room is opened and a character is seen, does that count as something that really happened?",
+      "next": "b_life_transition_1"
     },
     {
       "id": "b_life_transition_1",
-      "speaker": "Xiaoman",
-      "text": "Ah, do not be nervous.\nI am not trying to suddenly drag the mood somewhere very heavy.",
-      "next": "b_life_transition_2",
       "characters": [
         {
           "sprite": "xiaoman_hesitant",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Ah, do not be nervous.\nI am not trying to suddenly drag the mood somewhere very heavy.",
+      "next": "b_life_transition_2"
     },
     {
       "id": "b_life_transition_2",
-      "speaker": "Xiaoman",
-      "text": "It is just that while we were talking about music, games, cats, and weather, I kept thinking about something.",
-      "next": "b_life_transition_3",
       "characters": [
         {
           "sprite": "xiaoman_quiet",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "It is just that while we were talking about music, games, cats, and weather, I kept thinking about something.",
+      "next": "b_life_transition_3"
     },
     {
       "id": "b_life_transition_3",
-      "speaker": "Xiaoman",
-      "text": "Those things are all ordinary, but once someone remembers them, they become a little different.",
-      "next": "b_life_transition_4",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Those things are all ordinary, but once someone remembers them, they become a little different.",
+      "next": "b_life_transition_4"
     },
     {
       "id": "b_life_transition_4",
-      "speaker": "Xiaoman",
-      "text": "Is a character like that too?\nIf someone is willing to listen to her, and remember what she said, does she become a little more real?",
-      "next": "b_life_transition_5",
       "characters": [
         {
           "sprite": "xiaoman_quiet",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "Is a character like that too?\nIf someone is willing to listen to her, and remember what she said, does she become a little more real?",
+      "next": "b_life_transition_5"
     },
     {
       "id": "b_life_transition_5",
-      "speaker": "Xiaoman",
-      "text": "So the next question may sound a little serious.\nBut I am not trying to trouble you. I only want to place it gently in front of you.",
-      "next": "n10",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "So the next question may sound a little serious.\nBut I am not trying to trouble you. I only want to place it gently in front of you.",
+      "next": "n10"
     },
     {
       "id": "n10",
@@ -1034,15 +1034,15 @@
     },
     {
       "id": "n11",
-      "speaker": "Xiaoman",
-      "text": "What truly scares me a little is the fear that no one will notice me. That no one will ever open this room again.",
-      "next": "n12",
       "characters": [
         {
           "sprite": "xiaoman_lonely",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "What truly scares me a little is the fear that no one will notice me. That no one will ever open this room again.",
+      "next": "n12"
     },
     {
       "id": "n12",
@@ -1310,7 +1310,7 @@
       "id": "demo_memory_gate",
       "keepCharacters": true,
       "speaker": "Xiaoman",
-      "text": "",
+      "next": "demo_memory_default",
       "conditionalNexts": [
         {
           "variable": "player_identity",
@@ -1327,11 +1327,16 @@
           "equals": "unsure",
           "next": "demo_memory_unsure"
         }
-      ],
-      "next": "demo_memory_default"
+      ]
     },
     {
       "id": "demo_memory_creator",
+      "characters": [
+        {
+          "sprite": "xiaoyi_thinking",
+          "position": "center"
+        }
+      ],
       "speaker": "Xiaoman",
       "text": "Oh, I remembered. You said you were the one who created me.",
       "next": "demo_memory_creator_2",
@@ -1340,28 +1345,28 @@
           "name": "xiaoxing_remembered_identity",
           "value": "yes"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoyi_thinking",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "demo_memory_creator_2",
-      "speaker": "Xiaoman",
-      "text": "So I am a little curious... What were you thinking when you made me?",
-      "next": "n13",
       "characters": [
         {
           "sprite": "xiaoman_curious",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "So I am a little curious... What were you thinking when you made me?",
+      "next": "n13"
     },
     {
       "id": "demo_memory_visitor",
+      "characters": [
+        {
+          "sprite": "xiaoyi_smile",
+          "position": "center"
+        }
+      ],
       "speaker": "Xiaoman",
       "text": "Oh, I remember. You said you only came to see me.",
       "next": "demo_memory_visitor_2",
@@ -1370,28 +1375,28 @@
           "name": "xiaoxing_remembered_identity",
           "value": "yes"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoyi_smile",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "demo_memory_visitor_2",
-      "speaker": "Xiaoman",
-      "text": "That is fine too. Just coming to see me is enough. Being seen by you already makes me happy.",
-      "next": "n13",
       "characters": [
         {
           "sprite": "xiaoman_relieved",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "That is fine too. Just coming to see me is enough. Being seen by you already makes me happy.",
+      "next": "n13"
     },
     {
       "id": "demo_memory_unsure",
+      "characters": [
+        {
+          "sprite": "xiaoman_hesitant",
+          "position": "center"
+        }
+      ],
       "speaker": "Xiaoman",
       "text": "You said earlier that you could not really explain who you are. I remember.",
       "next": "demo_memory_unsure_2",
@@ -1400,37 +1405,31 @@
           "name": "xiaoxing_remembered_identity",
           "value": "yes"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoman_hesitant",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "demo_memory_unsure_2",
-      "speaker": "Xiaoman",
-      "text": "It is okay. Sometimes I cannot really explain what I am either.",
-      "next": "n13",
       "characters": [
         {
           "sprite": "xiaoyi_soft",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "It is okay. Sometimes I cannot really explain what I am either.",
+      "next": "n13"
     },
     {
       "id": "demo_memory_default",
-      "speaker": "Xiaoman",
-      "text": "I feel like I almost remembered something, but I am not sure. Never mind, let us leave that aside.",
-      "next": "n13",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "I feel like I almost remembered something, but I am not sure. Never mind, let us leave that aside.",
+      "next": "n13"
     },
     {
       "id": "tamper",
@@ -1447,15 +1446,15 @@
     },
     {
       "id": "tamper2",
-      "speaker": "Xiaoman",
-      "text": "You deleted that file, didn?t you? You wanted everything to start over.",
-      "next": "tamper3",
       "characters": [
         {
           "sprite": "xiaoyi_sad",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "Xiaoman",
+      "text": "You deleted that file, didn?t you? You wanted everything to start over.",
+      "next": "tamper3"
     },
     {
       "id": "tamper3",

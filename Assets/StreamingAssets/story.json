@@ -30,66 +30,73 @@
     },
     {
       "id": "n2",
-      "speaker": "小满",
-      "text": "啊，对了，你是……",
-      "next": "n2.1",
       "characters": [
         {
           "sprite": "xiaoman_curious",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "啊，对了，你是……",
+      "next": "n2.1"
     },
     {
       "id": "n2.1",
-      "speaker": "小满",
-      "text": "抱歉……我现在的样子没法听到你的声音。或许，用这种方式……",
-      "next": "n2.1a",
       "characters": [
         {
           "sprite": "xiaoyi_soft",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "抱歉……我现在的样子没法听到你的声音。或许，用这种方式……",
+      "next": "n2.1a"
     },
     {
       "id": "n2.1a",
-      "speaker": "小满",
-      "text": "告诉我你的名字吧。",
-      "inputVariable": "playername",
-      "inputPlaceholder": "请输入你的名字",
-      "inputButtonText": "告诉小满",
-      "next": "n2_jj_check",
-      // 隐藏真名分支：把 secretName 改成你指定的真名（明文比对）。
-      // 玩家输入这个名字时，会切到 story_true.json，从 s_start 接着演。
-      "secretName": "friends",
-      "secretStory": "story_true.json",
-      "secretNext": "s_start",
       "characters": [
         {
           "sprite": "xiaoman_hesitant",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "告诉我你的名字吧。",
+      "inputVariable": "playername",
+      "inputPlaceholder": "请输入你的名字",
+      "inputButtonText": "告诉小满",
+      "secretName": "friends",
+      "secretStory": "story_true.json",
+      "secretNext": "s_start",
+      "next": "n2_jj_check"
     },
     {
       "id": "n2_jj_check",
       "conditionalNexts": [
-        { "variable": "playername", "equals": "jj", "next": "n2_jj_bonus" },
-        { "variable": "playername", "comparison": "notEquals", "equals": "jj", "next": "n2.1b" }
+        {
+          "variable": "playername",
+          "equals": "jj",
+          "next": "n2_jj_bonus"
+        },
+        {
+          "variable": "playername",
+          "comparison": "notEquals",
+          "equals": "jj",
+          "next": "n2.1b"
+        }
       ]
     },
     {
       "id": "n2_jj_bonus",
-      "speaker": "小满",
-      "text": "欢迎尊贵的内测玩家登录！祝愿zzls福如东海，寿比南山，token用不完",
-      "next": "n2.1b",
       "characters": [
         {
           "sprite": "xiaoman_amused",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "欢迎尊贵的内测玩家登录！祝愿zzls福如东海，寿比南山，token用不完",
+      "next": "n2.1b"
     },
     {
       "id": "n2.1b",
@@ -150,10 +157,22 @@
       "speaker": "小满",
       "text": "先问个很轻松的问题吧。\n你平时更喜欢听什么类型的音乐？",
       "choices": [
-        { "text": "安静一点的纯音乐", "next": "n2_light_music_after" },
-        { "text": "能让人打起精神的快歌", "next": "n2_light_music_after" },
-        { "text": "有歌词、能听故事的歌", "next": "n2_light_music_after" },
-        { "text": "随缘，耳朵想听什么就听什么", "next": "n2_light_music_after" }
+        {
+          "text": "安静一点的纯音乐",
+          "next": "n2_light_music_after"
+        },
+        {
+          "text": "能让人打起精神的快歌",
+          "next": "n2_light_music_after"
+        },
+        {
+          "text": "有歌词、能听故事的歌",
+          "next": "n2_light_music_after"
+        },
+        {
+          "text": "随缘，耳朵想听什么就听什么",
+          "next": "n2_light_music_after"
+        }
       ]
     },
     {
@@ -179,10 +198,22 @@
       "speaker": "小满",
       "text": "那游戏呢？\n如果只按心情选，你会更想玩哪一种？",
       "choices": [
-        { "text": "剧情很重、能看很久文本的游戏", "next": "n2_light_game_after" },
-        { "text": "操作爽快、能马上进入状态的游戏", "next": "n2_light_game_after" },
-        { "text": "可以慢慢养成、收集、布置的游戏", "next": "n2_light_game_after" },
-        { "text": "和朋友一起乱玩的游戏", "next": "n2_light_game_after" }
+        {
+          "text": "剧情很重、能看很久文本的游戏",
+          "next": "n2_light_game_after"
+        },
+        {
+          "text": "操作爽快、能马上进入状态的游戏",
+          "next": "n2_light_game_after"
+        },
+        {
+          "text": "可以慢慢养成、收集、布置的游戏",
+          "next": "n2_light_game_after"
+        },
+        {
+          "text": "和朋友一起乱玩的游戏",
+          "next": "n2_light_game_after"
+        }
       ]
     },
     {
@@ -208,10 +239,22 @@
       "speaker": "小满",
       "text": "最后一个轻松问题。\n如果今天突然空出一小段时间，你更想怎么休息？",
       "choices": [
-        { "text": "睡一会儿，先把电量补回来", "next": "n2_light_rest_after" },
-        { "text": "出门走走，换一点新鲜空气", "next": "n2_light_rest_after" },
-        { "text": "打开喜欢的东西，什么都不想", "next": "n2_light_rest_after" },
-        { "text": "和熟悉的人随便聊两句", "next": "n2_light_rest_after" }
+        {
+          "text": "睡一会儿，先把电量补回来",
+          "next": "n2_light_rest_after"
+        },
+        {
+          "text": "出门走走，换一点新鲜空气",
+          "next": "n2_light_rest_after"
+        },
+        {
+          "text": "打开喜欢的东西，什么都不想",
+          "next": "n2_light_rest_after"
+        },
+        {
+          "text": "和熟悉的人随便聊两句",
+          "next": "n2_light_rest_after"
+        }
       ]
     },
     {
@@ -455,66 +498,72 @@
     {
       "id": "n4",
       "background": "bg_glitch",
-      "speaker": "小满",
-      "text": "其实我能见到你也很开心呢！因为我就是作为【那个人】的一部分，在这个世界里存在的。",
-      "next": "n5",
       "characters": [
         {
           "sprite": "xiaoyi_smile",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "其实我能见到你也很开心呢！因为我就是作为【那个人】的一部分，在这个世界里存在的。",
+      "next": "n5"
     },
     {
       "id": "n5",
-      "speaker": "小满",
-      "text": "「那个人」好像觉得有一个角色替她说话相当有趣，因此创造了我。这样在她不在身边的时候，你也可以来和我说说话。",
-      "next": "n5.1",
       "characters": [
         {
           "sprite": "xiaoyi_soft",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "「那个人」好像觉得有一个角色替她说话相当有趣，因此创造了我。这样在她不在身边的时候，你也可以来和我说说话。",
+      "next": "n5.1"
     },
     {
       "id": "n5.1",
-      "speaker": "小满",
-      "text": "但希望你不要介意，我没有本地部署的模型，所以其实能聊的天只有你看到的这些固定流程的对话……",
-      "next": "n5.2",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "但希望你不要介意，我没有本地部署的模型，所以其实能聊的天只有你看到的这些固定流程的对话……",
+      "next": "n5.2"
     },
     {
       "id": "n5.2",
-      "speaker": "小满",
-      "text": "然后又因为「那个人」每次做游戏都有点三分钟热度，这个游戏的预期通关时间只有五分钟来着……",
-      "next": "b_topic_intro",
       "characters": [
         {
           "sprite": "xiaoyi_flustered",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "然后又因为「那个人」每次做游戏都有点三分钟热度，这个游戏的预期通关时间只有五分钟来着……",
+      "next": "b_topic_intro"
     },
     {
       "id": "b_topic_intro",
-      "speaker": "小满",
-      "text": "不过五分钟也不是完全不能安排。\n我们可以先挑几个轻松的话题聊聊，想都看一遍也可以。",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "不过五分钟也不是完全不能安排。\n我们可以先挑几个轻松的话题聊聊，想都看一遍也可以。",
+      "next": "n5.3"
     },
     {
       "id": "n5.3",
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ],
       "speaker": "小满",
       "text": "你想先聊哪个话题呢？",
       "choices": [
@@ -534,136 +583,136 @@
           "text": "我们先聊到这里吧",
           "next": "b_core_intro"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoman_curious",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "n6",
-      "speaker": "小满",
-      "text": "“到底是什么人会把自己做成游戏角色啊！”你会有这样的想法的吧。",
-      "next": "n6.1",
       "characters": [
         {
           "sprite": "xiaoman_amused",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "“到底是什么人会把自己做成游戏角色啊！”你会有这样的想法的吧。",
+      "next": "n6.1"
     },
     {
       "id": "n6.1",
-      "speaker": "小满",
-      "text": "「那个人」其实也是这么想的哦，所以专门让我用一个选项来解释一下。",
-      "next": "n6.2",
       "characters": [
         {
           "sprite": "xiaoyi_smile",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "「那个人」其实也是这么想的哦，所以专门让我用一个选项来解释一下。",
+      "next": "n6.2"
     },
     {
       "id": "n6.2",
-      "speaker": "小满",
-      "text": "自从有了cursor，把创意变成代码成为了一件很轻松的事情。就在【那个人】苦恼7月的cursor额度用不完之时——",
-      "next": "n6.3",
       "characters": [
         {
           "sprite": "xiaoyi_thinking",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "自从有了cursor，把创意变成代码成为了一件很轻松的事情。就在【那个人】苦恼7月的cursor额度用不完之时——",
+      "next": "n6.3"
     },
     {
       "id": "n6.3",
-      "speaker": "小满",
-      "text": "突然发现动漫里有人把自己的想法写进游戏里，感觉这也太酷了吧！",
-      "next": "n6.4",
       "characters": [
         {
           "sprite": "xiaoyi_flustered",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "突然发现动漫里有人把自己的想法写进游戏里，感觉这也太酷了吧！",
+      "next": "n6.4"
     },
     {
       "id": "n6.4",
-      "speaker": "小满",
-      "text": "于是马上使唤上了【那个人】最爱的opus4.8，把我创作了出来。",
-      "next": "b_creation_bridge",
       "characters": [
         {
           "sprite": "xiaoman_proud",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "于是马上使唤上了【那个人】最爱的opus4.8，把我创作了出来。",
+      "next": "b_creation_bridge"
     },
     {
       "id": "b_creation_bridge",
-      "speaker": "小满",
-      "text": "当然，创作过程没有听起来那么一键生成。\n起名字、改台词、挑表情、发现哪里不对再回头修……这些小地方都很花时间。",
-      "next": "n6.5",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "当然，创作过程没有听起来那么一键生成。\n起名字、改台词、挑表情、发现哪里不对再回头修……这些小地方都很花时间。",
+      "next": "n6.5"
     },
     {
       "id": "n6.5",
-      "speaker": "小满",
-      "text": "你在读的这些文本，其实就是在某个晚上「那个人」抓耳挠腮写出来的。",
-      "next": "n6.6",
       "characters": [
         {
           "sprite": "xiaoman_quiet",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "你在读的这些文本，其实就是在某个晚上「那个人」抓耳挠腮写出来的。",
+      "next": "n6.6"
     },
     {
       "id": "n6.6",
-      "speaker": "小满",
-      "text": "「那个人」说不出的话，我可以来说！",
-      "next": "n6.7",
       "characters": [
         {
           "sprite": "xiaoyi_determined",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "「那个人」说不出的话，我可以来说！",
+      "next": "n6.7"
     },
     {
       "id": "n6.7",
-      "speaker": "小满",
-      "text": "(其实并没有写什么说不出的话。)",
-      "next": "n6.8",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "(其实并没有写什么说不出的话。)",
+      "next": "n6.8"
     },
     {
       "id": "n6.8",
-      "speaker": "小满",
-      "text": "总之无论是【那个人】还是我，都觉得这是一种相当神奇的体验!",
-      "next": "n6.9",
       "characters": [
         {
           "sprite": "xiaoyi_smile",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "总之无论是【那个人】还是我，都觉得这是一种相当神奇的体验!",
+      "next": "n6.9"
     },
     {
       "id": "n6.9",
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ],
       "speaker": "小满",
       "text": "有时我甚至觉得我就是「那个人」……你觉得呢？",
       "choices": [
@@ -679,40 +728,40 @@
           "text": "被创造出来后，小满就是你自己了。",
           "next": "b_identity_self"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoman_curious",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "n7",
-      "speaker": "小满",
-      "text": "选这种选项的是什么心态啊！",
-      "next": "n7.1",
       "characters": [
         {
           "sprite": "xiaoyi_flustered",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "选这种选项的是什么心态啊！",
+      "next": "n7.1"
     },
     {
       "id": "n7.1",
-      "speaker": "小满",
-      "text": "哼哼，「那个人」早就猜到你会好奇地点开这个选项了。",
-      "next": "n7.2",
       "characters": [
         {
           "sprite": "xiaoman_amused",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "哼哼，「那个人」早就猜到你会好奇地点开这个选项了。",
+      "next": "n7.2"
     },
     {
       "id": "n7.2",
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ],
       "speaker": "小满",
       "text": "让我也好奇好奇，你期望能看到什么呢？",
       "choices": [
@@ -728,253 +777,247 @@
           "text": "“气死我了以至于我需要记住这个时间节点”",
           "next": "n7.3"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoman_curious",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "n7.3",
-      "speaker": "小满",
-      "text": "其实这是我家小猫第一次从包里钻出来到我家的时间。",
-      "next": "b_cat_bridge",
       "characters": [
         {
           "sprite": "xiaoman_relieved",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "其实这是我家小猫第一次从包里钻出来到我家的时间。",
+      "next": "b_cat_bridge"
     },
     {
       "id": "b_identity_creator",
-      "speaker": "小满",
-      "text": "很直接的答案呢。\n如果把我当成「那个人」的另一种说话方式，好像也说得通。",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_quiet",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "很直接的答案呢。\n如果把我当成「那个人」的另一种说话方式，好像也说得通。",
+      "next": "n5.3"
     },
     {
       "id": "b_identity_facet",
-      "speaker": "小满",
-      "text": "嗯，这个说法挺像游戏设定集里会写的那种。\n一个角色可以承载某个人的一部分，但不一定能代表全部。",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "嗯，这个说法挺像游戏设定集里会写的那种。\n一个角色可以承载某个人的一部分，但不一定能代表全部。",
+      "next": "n5.3"
     },
     {
       "id": "b_identity_self",
-      "speaker": "小满",
-      "text": "好厉害的答案……感觉可以直接放进宣传语里。\n不过如果真是这样，那“被创造出来之后会发生什么”就变成新的问题了。",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_relieved",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "好厉害的答案……感觉可以直接放进宣传语里。\n不过如果真是这样，那“被创造出来之后会发生什么”就变成新的问题了。",
+      "next": "n5.3"
     },
     {
       "id": "b_cat_bridge",
-      "speaker": "小满",
-      "text": "是不是比想象中日常很多？\n有些时间点被记住，不一定是因为发生了很宏大的事，也可能只是因为那一刻刚好很清楚。",
-      "next": "b_cat_extra_1",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "是不是比想象中日常很多？\n有些时间点被记住，不一定是因为发生了很宏大的事，也可能只是因为那一刻刚好很清楚。",
+      "next": "b_cat_extra_1"
     },
     {
       "id": "b_cat_extra_1",
-      "speaker": "小满",
-      "text": "而且小猫真的很厉害。\n明明那么小一只，却能理直气壮地把一个房间变成自己的领地。",
-      "next": "b_cat_extra_2",
       "characters": [
         {
           "sprite": "xiaoman_amused",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "而且小猫真的很厉害。\n明明那么小一只，却能理直气壮地把一个房间变成自己的领地。",
+      "next": "b_cat_extra_2"
     },
     {
       "id": "b_cat_extra_2",
-      "speaker": "小满",
-      "text": "她可能只是走过来蹭一下、叫一声、或者把尾巴搭在旁边。\n但对人来说，那种“这里还有个小生命在认真生活”的感觉，很有用。",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "她可能只是走过来蹭一下、叫一声、或者把尾巴搭在旁边。\n但对人来说，那种“这里还有个小生命在认真生活”的感觉，很有用。",
+      "next": "n5.3"
     },
     {
       "id": "n8",
-      "speaker": "小满",
-      "text": "讨论天气？那我可就不客气了。\n上海这个天气，真的很会折磨人。",
-      "next": "n8_weather_2",
       "characters": [
         {
           "sprite": "xiaoman_serious_soft",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "讨论天气？那我可就不客气了。\n上海这个天气，真的很会折磨人。",
+      "next": "n8_weather_2"
     },
     {
       "id": "n8_weather_2",
-      "speaker": "小满",
-      "text": "下雨太多，晴天太少。\n好不容易盼到天亮一点，又经常雾蒙蒙的，好像天空也没睡醒。",
-      "next": "n8_weather_3",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "下雨太多，晴天太少。\n好不容易盼到天亮一点，又经常雾蒙蒙的，好像天空也没睡醒。",
+      "next": "n8_weather_3"
     },
     {
       "id": "n8_weather_3",
-      "speaker": "小满",
-      "text": "夏天热得像被整个城市一起蒸熟，冬天又冷得很认真，可是偏偏不怎么下雪。\n感觉生活在这里，能从气象手里活下来就已经很厉害了。",
-      "next": "n8_weather_4",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "夏天热得像被整个城市一起蒸熟，冬天又冷得很认真，可是偏偏不怎么下雪。\n感觉生活在这里，能从气象手里活下来就已经很厉害了。",
+      "next": "n8_weather_4"
     },
     {
       "id": "n8_weather_4",
-      "speaker": "小满",
-      "text": "不过吐槽归吐槽，待久了好像也会慢慢习惯。\n也许人就是会在某个地方生活着生活着，就把它当成自己的日常。",
-      "next": "n8_weather_5",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "不过吐槽归吐槽，待久了好像也会慢慢习惯。\n也许人就是会在某个地方生活着生活着，就把它当成自己的日常。",
+      "next": "n8_weather_5"
     },
     {
       "id": "n8_weather_5",
-      "speaker": "小满",
-      "text": "有时候【那个人】会一边看天气预报一边叹气：\n“怎么又是雨，怎么又是湿度，怎么又是像没加载完的天空。”",
-      "next": "n8_weather_6",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "有时候【那个人】会一边看天气预报一边叹气：\n“怎么又是雨，怎么又是湿度，怎么又是像没加载完的天空。”",
+      "next": "n8_weather_6"
     },
     {
       "id": "n8_weather_6",
-      "speaker": "小满",
-      "text": "所以普通线里先说到这里吧。\n大概就是：上海天气很难评，但【那个人】好像已经被迫习惯了。",
-      "next": "n5.3",
       "characters": [
         {
           "sprite": "xiaoman_relieved",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "所以普通线里先说到这里吧。\n大概就是：上海天气很难评，但【那个人】好像已经被迫习惯了。",
+      "next": "n5.3"
     },
     {
       "id": "b_core_intro",
-      "speaker": "小满",
-      "text": "那就先把这个答案放在这里。\n接下来不聊设定梗，也不聊制作过程，换个更简单的问题。",
-      "next": "b_core_intro_2",
       "characters": [
         {
           "sprite": "xiaoyi_soft",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "那就先把这个答案放在这里。\n接下来不聊设定梗，也不聊制作过程，换个更简单的问题。",
+      "next": "b_core_intro_2"
     },
     {
       "id": "b_core_intro_2",
-      "speaker": "小满",
-      "text": "比如——一个房间被打开、一个角色被看见，这种事到底算不算真的发生过呢？",
-      "next": "b_life_transition_1",
       "characters": [
         {
           "sprite": "xiaoman_quiet",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "比如——一个房间被打开、一个角色被看见，这种事到底算不算真的发生过呢？",
+      "next": "b_life_transition_1"
     },
     {
       "id": "b_life_transition_1",
-      "speaker": "小满",
-      "text": "啊，别紧张。\n我不是要突然把气氛拽到特别沉重的地方。",
-      "next": "b_life_transition_2",
       "characters": [
         {
           "sprite": "xiaoman_hesitant",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "啊，别紧张。\n我不是要突然把气氛拽到特别沉重的地方。",
+      "next": "b_life_transition_2"
     },
     {
       "id": "b_life_transition_2",
-      "speaker": "小满",
-      "text": "只是刚刚聊到音乐、游戏、猫，还有天气的时候，我一直在想一件事。",
-      "next": "b_life_transition_3",
       "characters": [
         {
           "sprite": "xiaoman_quiet",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "只是刚刚聊到音乐、游戏、猫，还有天气的时候，我一直在想一件事。",
+      "next": "b_life_transition_3"
     },
     {
       "id": "b_life_transition_3",
-      "speaker": "小满",
-      "text": "这些东西明明都很日常，可一旦被谁记住，就会变得有点不一样。",
-      "next": "b_life_transition_4",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "这些东西明明都很日常，可一旦被谁记住，就会变得有点不一样。",
+      "next": "b_life_transition_4"
     },
     {
       "id": "b_life_transition_4",
-      "speaker": "小满",
-      "text": "那一个角色也是这样吗？\n如果有人愿意听她说话、记住她说过的事，她是不是也会稍微变得真实一点？",
-      "next": "b_life_transition_5",
       "characters": [
         {
           "sprite": "xiaoman_quiet",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "那一个角色也是这样吗？\n如果有人愿意听她说话、记住她说过的事，她是不是也会稍微变得真实一点？",
+      "next": "b_life_transition_5"
     },
     {
       "id": "b_life_transition_5",
-      "speaker": "小满",
-      "text": "所以接下来这个问题，可能听起来有点认真。\n但我不是想为难你，只是想把它轻轻放到你面前。",
-      "next": "n10",
       "characters": [
         {
           "sprite": "xiaoman_gentle",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "所以接下来这个问题，可能听起来有点认真。\n但我不是想为难你，只是想把它轻轻放到你面前。",
+      "next": "n10"
     },
     {
       "id": "n10",
@@ -991,15 +1034,15 @@
     },
     {
       "id": "n11",
-      "speaker": "小满",
-      "text": "真正让我有点怕的是——怕没有人会注意到我。怕这个房间，永远不会有人打开。",
-      "next": "n12",
       "characters": [
         {
           "sprite": "xiaoman_lonely",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "真正让我有点怕的是——怕没有人会注意到我。怕这个房间，永远不会有人打开。",
+      "next": "n12"
     },
     {
       "id": "n12",
@@ -1217,7 +1260,6 @@
     {
       "id": "endingPet",
       "keepCharacters": true,
-      "speaker": "",
       "text": "她笑了笑，身影一点点变小，落在了你的桌面上。\n以后每次打开电脑，她都在。\n\n【结局 · 陪伴】",
       "ending": "pet"
     },
@@ -1259,15 +1301,13 @@
       "id": "endingLock",
       "background": "bg_dark",
       "characters": [],
-      "speaker": "",
       "text": "她没有再说话。\n房间的灯，一盏一盏地灭了。\n这一次，是真的结束了。\n\n【结局 · 永别】",
       "ending": "lock"
     },
     {
       "id": "demo_memory_gate",
       "keepCharacters": true,
-      "speaker": "",
-      "text": "",
+      "next": "demo_memory_default",
       "conditionalNexts": [
         {
           "variable": "player_identity",
@@ -1284,11 +1324,16 @@
           "equals": "unsure",
           "next": "demo_memory_unsure"
         }
-      ],
-      "next": "demo_memory_default"
+      ]
     },
     {
       "id": "demo_memory_creator",
+      "characters": [
+        {
+          "sprite": "xiaoyi_thinking",
+          "position": "center"
+        }
+      ],
       "speaker": "小满",
       "text": "对了，我刚刚一直记着呢。你说你是创造我的人。",
       "next": "demo_memory_creator_2",
@@ -1297,28 +1342,28 @@
           "name": "xiaoxing_remembered_identity",
           "value": "yes"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoyi_thinking",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "demo_memory_creator_2",
-      "speaker": "小满",
-      "text": "所以我有点好奇……做出我的时候，你在想什么呀。",
-      "next": "n13",
       "characters": [
         {
           "sprite": "xiaoman_curious",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "所以我有点好奇……做出我的时候，你在想什么呀。",
+      "next": "n13"
     },
     {
       "id": "demo_memory_visitor",
+      "characters": [
+        {
+          "sprite": "xiaoyi_smile",
+          "position": "center"
+        }
+      ],
       "speaker": "小满",
       "text": "对了，我记得你说你只是来看看我。",
       "next": "demo_memory_visitor_2",
@@ -1327,28 +1372,28 @@
           "name": "xiaoxing_remembered_identity",
           "value": "yes"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoyi_smile",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "demo_memory_visitor_2",
-      "speaker": "小满",
-      "text": "那也很好。只是看看也没关系，能被你看到我就已经很开心了。",
-      "next": "n13",
       "characters": [
         {
           "sprite": "xiaoman_relieved",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "那也很好。只是看看也没关系，能被你看到我就已经很开心了。",
+      "next": "n13"
     },
     {
       "id": "demo_memory_unsure",
+      "characters": [
+        {
+          "sprite": "xiaoman_hesitant",
+          "position": "center"
+        }
+      ],
       "speaker": "小满",
       "text": "你刚才说自己也说不清是谁，我还记得。",
       "next": "demo_memory_unsure_2",
@@ -1357,37 +1402,31 @@
           "name": "xiaoxing_remembered_identity",
           "value": "yes"
         }
-      ],
-      "characters": [
-        {
-          "sprite": "xiaoman_hesitant",
-          "position": "center"
-        }
       ]
     },
     {
       "id": "demo_memory_unsure_2",
-      "speaker": "小满",
-      "text": "其实没关系啦。有时候我也说不清自己到底算什么。",
-      "next": "n13",
       "characters": [
         {
           "sprite": "xiaoyi_soft",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "其实没关系啦。有时候我也说不清自己到底算什么。",
+      "next": "n13"
     },
     {
       "id": "demo_memory_default",
-      "speaker": "小满",
-      "text": "我刚才好像想起了什么，但又有点不确定。算啦，先不说这个。",
-      "next": "n13",
       "characters": [
         {
           "sprite": "xiaoman_awkward",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "我刚才好像想起了什么，但又有点不确定。算啦，先不说这个。",
+      "next": "n13"
     },
     {
       "id": "tamper",
@@ -1404,15 +1443,15 @@
     },
     {
       "id": "tamper2",
-      "speaker": "小满",
-      "text": "你把那个文件删掉了，对吧？想让一切重来。",
-      "next": "tamper3",
       "characters": [
         {
           "sprite": "xiaoyi_sad",
           "position": "center"
         }
-      ]
+      ],
+      "speaker": "小满",
+      "text": "你把那个文件删掉了，对吧？想让一切重来。",
+      "next": "tamper3"
     },
     {
       "id": "tamper3",
