@@ -310,6 +310,14 @@ namespace VN
                 SaveSystem.Save(State);
                 EnterPetMode();
             }
+            else if (endingType == "petcalendar")
+            {
+                // 「本人」隐藏名字：进入带日历提醒的专属桌宠。
+                State.petMode = true;
+                State.ownerMode = true;
+                SaveSystem.Save(State);
+                EnterPetMode();
+            }
             else if (endingType == "lock")
             {
                 State.locked = true;
@@ -329,8 +337,10 @@ namespace VN
 
             var petGO = new GameObject("DesktopPet");
             _pet = petGO.AddComponent<DesktopPet>();
-            // true 线解锁后，桌宠右键菜单里会出现“切换成对话”。
-            _pet.Init(_camera, Canvas, State != null && State.avgUnlocked);
+            // true 线解锁后，桌宠右键菜单里会出现“切换成对话”；本人模式下会出现“日历”。
+            _pet.Init(_camera, Canvas,
+                State != null && State.avgUnlocked,
+                State != null && State.ownerMode);
         }
 
         // true 线结局解锁的 AVG 对话框形态；有按钮可切回桌宠。

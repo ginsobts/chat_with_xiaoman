@@ -68,7 +68,59 @@
       "secretName": "friends",
       "secretStory": "story_true.json",
       "secretNext": "s_start",
-      "next": "n2_jj_check"
+      "next": "n2_owner_check"
+    },
+    {
+      "id": "n2_owner_check",
+      "conditionalNexts": [
+        {
+          "variable": "playername",
+          "equals": "xm本人",
+          "next": "n_owner_1"
+        },
+        {
+          "variable": "playername",
+          "comparison": "notEquals",
+          "equals": "xm本人",
+          "next": "n2_jj_check"
+        }
+      ]
+    },
+    {
+      "id": "n_owner_1",
+      "characters": [
+        {
+          "sprite": "xiaoman_curious",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "咦……这个名字……",
+      "next": "n_owner_2"
+    },
+    {
+      "id": "n_owner_2",
+      "characters": [
+        {
+          "sprite": "xiaoman_amused",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "啊，是你呀。原来是你本人来啦。",
+      "next": "n_owner_3"
+    },
+    {
+      "id": "n_owner_3",
+      "characters": [
+        {
+          "sprite": "xiaoman_gentle",
+          "position": "center"
+        }
+      ],
+      "speaker": "小满",
+      "text": "那我们就不用绕弯子啦。这个日历交给你——想让我帮你记着的日子，写进去就好，我会提前几天提醒你的。",
+      "ending": "petcalendar"
     },
     {
       "id": "n2_jj_check",

@@ -69,11 +69,28 @@ namespace VN
         // true 线解锁后可切换到 AVG 对话框
         private bool _avgToggle;
 
-        public void Init(Camera cam, Canvas canvas, bool avgToggle = false)
+        // 「本人」模式：右键菜单带日历，可设置提醒
+        private bool _calendarEnabled;
+        private ReminderStore _reminders;
+        private CalendarView _calendarView;
+        private bool _calendarOpen;
+        // 需玩家确认的提醒弹窗
+        private RectTransform _reminderPopup;
+        private Text _reminderPopupText;
+        private bool _reminderPopupActive;
+        private readonly Queue<Reminder> _reminderQueue = new Queue<Reminder>();
+        private Reminder _currentReminder;
+        private float _nextReminderCheckAt;
+        private string _lastReminderCheckDay = "";
+
+        public void Init(Camera cam, Canvas canvas, bool avgToggle = false, bool calendarEnabled = false)
         {
             _camera = cam;
             _canvas = canvas;
             _avgToggle = avgToggle;
+            _calendarEnabled = calendarEnabled;
+            if (_calendarEnabled)
+                _reminders = ReminderStore.Load();
 
             if (!Application.isEditor)
             {
@@ -97,6 +114,7 @@ namespace VN
             ScheduleNextIdleTalk();
             ScheduleNextCuteAnimation();
             ScheduleNextStroll();
+            _nextReminderCheckAt = Time.time + 2f; // 进入后稍等再做首次提醒检查
         }
 
         private IEnumerator ApplyOverlayDelayed(int w, int h)
@@ -142,6 +160,8 @@ namespace VN
             var menuItems = new List<(string, UnityEngine.Events.UnityAction)>();
             int muteIndex = menuItems.Count;
             menuItems.Add((MuteMenuLabel(), ToggleMute));
+            if (_calendarEnabled)
+                menuItems.Add((GameLanguage.Calendar, OpenCalendar));
             if (_avgToggle)
                 menuItems.Add((GameLanguage.SwitchToDialogue, () => GameManager.Instance.EnterAvgMode()));
             menuItems.Add((GameLanguage.Quit, () => GameManager.Instance.QuitGame()));
@@ -213,9 +233,12 @@ namespace VN
         {
             bool over = PointerOverPet();
 
+            // 日历面板 / 提醒弹窗打开时，整窗接收点击，保证能操作。
+            bool modalOpen = _calendarOpen || _reminderPopupActive;
+
             // 根据鼠标是否在宠物上切换点击穿透
             if (!Application.isEditor)
-                Win32Window.SetClickThrough(!over && !_dragging && !_menu.gameObject.activeSelf);
+                Win32Window.SetClickThrough(!over && !_dragging && !_menu.gameObject.activeSelf && !modalOpen);
 
             _idleSeconds = GetIdleSeconds();
 
@@ -230,6 +253,7 @@ namespace VN
             HandleStroll();
             ApplyIdleBreathing();
             UpdateBubblePosition();
+            HandleReminders();
         }
 
         private bool PointerOverPet()
@@ -291,6 +315,7 @@ namespace VN
 
         private void HandleDrag(bool over)
         {
+            if (_calendarOpen) return; // 日历面板打开时不响应桌宠拖动
             if (Input.GetMouseButtonDown(0) && over)
             {
                 _dragging = true;
@@ -428,6 +453,7 @@ namespace VN
 
         private void HandleMenu(bool over)
         {
+            if (_calendarOpen) return;
             if (Input.GetMouseButtonDown(1) && over)
             {
                 bool show = !_menu.gameObject.activeSelf;
@@ -446,6 +472,7 @@ namespace VN
 
         private void HandleIdleAndSleep()
         {
+            if (_calendarOpen || _reminderPopupActive) return; // 面板/提醒期间不睡
             bool shouldSleep = _idleSeconds >= _config.sleepAfterSeconds;
             if (shouldSleep != _sleeping)
                 SetSleeping(shouldSleep);
@@ -494,6 +521,7 @@ namespace VN
         private void HandleRandomTalk()
         {
             if (_sleeping || _dragging || _strolling || _menu.gameObject.activeSelf) return;
+            if (_calendarOpen || _reminderPopupActive) return;
             if (Time.time < _nextIdleTalkAt) return;
 
             SayLine(PickLine(_config.idle));
@@ -517,7 +545,7 @@ namespace VN
 
         private void HandleTimeGreeting()
         {
-            if (_sleeping || _dragging || _strolling) return;
+            if (_sleeping || _dragging || _strolling || _calendarOpen || _reminderPopupActive) return;
             int bucket = CurrentTimeBucket();
             if (bucket == _lastGreetBucket) return;
             _lastGreetBucket = bucket;               // 首次进入会问候一次，之后仅在跨时段时再问候
@@ -554,14 +582,143 @@ namespace VN
             if (_wasAway && _idleSeconds < 1f)
             {
                 _wasAway = false;
-                if (_dragging) return;
+                if (_dragging || _calendarOpen || _reminderPopupActive) return;
                 SayLine(PickLine(_config.welcome));
             }
         }
 
+        // ---------------- 日历与提醒 ----------------
+
+        private void OpenCalendar()
+        {
+            if (!_calendarEnabled || _reminders == null) return;
+            _menu.gameObject.SetActive(false);
+            if (_calendarView != null) return;
+
+            var go = new GameObject("CalendarView");
+            go.transform.SetParent(transform, false);
+            _calendarView = go.AddComponent<CalendarView>();
+            _calendarOpen = true;
+            _calendarView.Open(GameManager.Instance.Root, _reminders, () =>
+            {
+                _calendarOpen = false;
+                _calendarView = null;
+                // 关闭日历后立即重新检查一次（可能刚设置了近几天的提醒）。
+                _nextReminderCheckAt = 0f;
+            });
+        }
+
+        private void HandleReminders()
+        {
+            if (!_calendarEnabled || _reminders == null) return;
+
+            // 跨天时强制复查；平时每 30 秒查一次。
+            string todayKey = System.DateTime.Now.ToString("yyyy-MM-dd");
+            if (todayKey != _lastReminderCheckDay)
+            {
+                _lastReminderCheckDay = todayKey;
+                _nextReminderCheckAt = 0f;
+            }
+            if (Time.time >= _nextReminderCheckAt)
+            {
+                _nextReminderCheckAt = Time.time + 30f;
+                CheckReminders();
+            }
+
+            // 队列里有未展示的提醒且当前没在展示 → 展示下一条。
+            if (!_reminderPopupActive && _reminderQueue.Count > 0 && !_calendarOpen)
+                ShowNextReminder();
+        }
+
+        private void CheckReminders()
+        {
+            if (_reminderPopupActive) return;
+            var due = _reminders.DueReminders(System.DateTime.Now);
+            foreach (var r in due)
+            {
+                bool queued = false;
+                foreach (var q in _reminderQueue)
+                    if (q.id == r.id) { queued = true; break; }
+                if (!queued && (_currentReminder == null || _currentReminder.id != r.id))
+                    _reminderQueue.Enqueue(r);
+            }
+        }
+
+        private void ShowNextReminder()
+        {
+            if (_reminderQueue.Count == 0) return;
+            _currentReminder = _reminderQueue.Dequeue();
+
+            int days = ReminderStore.DaysUntil(_currentReminder, System.DateTime.Now);
+            string msg = days <= 0
+                ? GameLanguage.RemindToday(_currentReminder.title)
+                : GameLanguage.RemindDaysLeft(_currentReminder.title, days);
+
+            if (_sleeping) SetSleeping(false);
+            HideBubble();
+            EnsureReminderPopup();
+            _reminderPopupText.text = msg;
+            _reminderPopup.gameObject.SetActive(true);
+            _reminderPopupActive = true;
+            PositionReminderPopup();
+        }
+
+        private void EnsureReminderPopup()
+        {
+            if (_reminderPopup != null) return;
+            var root = GameManager.Instance.Root;
+
+            var panel = UITheme.AddPanel("ReminderPopup", root, new Color(1f, 0.99f, 0.95f, 0.98f));
+            _reminderPopup = panel.rectTransform;
+            _reminderPopup.anchorMin = _reminderPopup.anchorMax = new Vector2(0.5f, 0f);
+            _reminderPopup.pivot = new Vector2(0.5f, 0f);
+            _reminderPopup.sizeDelta = new Vector2(520, 200);
+            UITheme.AddOutline(panel, new Color(1f, 0.6f, 0.4f, 0.9f), new Vector2(2, -2));
+
+            _reminderPopupText = UITheme.AddText("ReminderText", _reminderPopup,
+                "", 28, new Color(0.15f, 0.12f, 0.1f, 1f), TextAnchor.MiddleCenter);
+            UITheme.SetRect(_reminderPopupText.rectTransform,
+                new Vector2(0, 0), new Vector2(1, 1),
+                new Vector2(24, 70), new Vector2(-24, -20));
+            _reminderPopupText.raycastTarget = false;
+
+            var ok = UITheme.AddButton("ReminderOk", _reminderPopup, GameLanguage.ConfirmGotIt, 26,
+                DismissCurrentReminder);
+            var okRt = ok.GetComponent<RectTransform>();
+            okRt.anchorMin = new Vector2(0.5f, 0f);
+            okRt.anchorMax = new Vector2(0.5f, 0f);
+            okRt.pivot = new Vector2(0.5f, 0f);
+            okRt.sizeDelta = new Vector2(200, 52);
+            okRt.anchoredPosition = new Vector2(0, 16);
+        }
+
+        private void PositionReminderPopup()
+        {
+            if (_reminderPopup == null) return;
+            Vector2 canvas = GameManager.Instance.Root.rect.size;
+            float halfW = canvas.x * 0.5f;
+            float bw = _reminderPopup.rect.width;
+            float bh = _reminderPopup.rect.height;
+            Vector2 pet = _petRect != null ? _petRect.anchoredPosition : Vector2.zero;
+            float x = Mathf.Clamp(pet.x, -halfW + bw * 0.5f + 8f, halfW - bw * 0.5f - 8f);
+            float y = Mathf.Clamp(pet.y + 180f, 8f, canvas.y - bh - 8f);
+            _reminderPopup.anchoredPosition = new Vector2(x, y);
+        }
+
+        private void DismissCurrentReminder()
+        {
+            if (_currentReminder != null)
+                _reminders.Acknowledge(_currentReminder, System.DateTime.Now);
+            _currentReminder = null;
+            _reminderPopupActive = false;
+            if (_reminderPopup != null)
+                _reminderPopup.gameObject.SetActive(false);
+            // 若还有排队的提醒，下一帧 HandleReminders 会继续展示。
+        }
+
         private void HandleHeadpat(bool over)
         {
-            if (_sleeping || _dragging) return;
+            if (_sleeping || _dragging || _calendarOpen || _reminderPopupActive) return;
             if (Time.time < _headpatCooldownUntil) return;
 
             if (!over || !PointerOverHead())
@@ -616,6 +773,7 @@ namespace VN
             if (!_config.strollEnabled) return;
             if (_strolling || _strollRoutine != null) return;
             if (_sleeping || _dragging || _menu.gameObject.activeSelf) return;
+            if (_calendarOpen || _reminderPopupActive) return;
             if (_bubble != null && _bubble.gameObject.activeSelf) return;
             if (_animationRoutine != null || _expressionRoutine != null || _dropRoutine != null) return;
             if (Time.time < _nextStrollAt) return;
@@ -689,6 +847,7 @@ namespace VN
         private void HandleCuteAnimation()
         {
             if (_sleeping || _dragging || _strolling || _menu.gameObject.activeSelf) return;
+            if (_calendarOpen || _reminderPopupActive) return;
             if (_bubble != null && _bubble.gameObject.activeSelf) return;
             if (_animationRoutine != null || _expressionRoutine != null) return;
             if (Time.time < _nextCuteAnimationAt) return;

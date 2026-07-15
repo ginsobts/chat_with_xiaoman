@@ -17,6 +17,7 @@ namespace VN
         public bool petMode = false;       // 结局A：已变成桌面宠物
         public bool locked = false;        // 结局B：已锁死
         public bool avgUnlocked = false;   // true 线结局：桌宠可与 AVG 对话框互相切换
+        public bool ownerMode = false;     // 「本人」隐藏名字：桌宠带日历提醒功能
         public int signature = 0;          // 简单校验，用来判断可见存档是否被改坏
     }
 
@@ -66,6 +67,7 @@ namespace VN
                 h = h * 31 + (s.petMode ? 1 : 0);
                 h = h * 31 + (s.locked ? 1 : 0);
                 h = h * 31 + (s.avgUnlocked ? 1 : 0);
+                h = h * 31 + (s.ownerMode ? 1 : 0);
                 h = h * 31 + (s.currentNode ?? "").GetHashCode();
                 h ^= 0x5A5A5A5A;
                 return h;
@@ -80,11 +82,13 @@ namespace VN
             bool hiddenLocked = ReadHiddenLocked();
             bool hiddenPet = ReadHiddenPet();
             bool hiddenAvg = ReadHiddenFlag("avg");
+            bool hiddenOwner = ReadHiddenFlag("owner");
 
             // 隐藏标记是“真相”。
             bool trulyLocked = hiddenLocked || (visible != null && visible.locked);
             bool trulyPet = hiddenPet || (visible != null && visible.petMode);
             bool trulyAvg = hiddenAvg || (visible != null && visible.avgUnlocked);
+            bool trulyOwner = hiddenOwner || (visible != null && visible.ownerMode);
 
             if (trulyLocked)
             {
@@ -104,6 +108,7 @@ namespace VN
                 petMode = trulyPet,
                 locked = trulyLocked,
                 avgUnlocked = trulyAvg,
+                ownerMode = trulyOwner,
                 currentNode = visible != null ? visible.currentNode : ""
             };
             return state;
@@ -199,6 +204,7 @@ namespace VN
                         key.SetValue("locked", state.locked ? 1 : 0, RegistryValueKind.DWord);
                         key.SetValue("pet", state.petMode ? 1 : 0, RegistryValueKind.DWord);
                         key.SetValue("avg", state.avgUnlocked ? 1 : 0, RegistryValueKind.DWord);
+                        key.SetValue("owner", state.ownerMode ? 1 : 0, RegistryValueKind.DWord);
                     }
                 }
             }
@@ -208,7 +214,8 @@ namespace VN
             {
                 string content = (state.locked ? "locked\n" : "")
                     + (state.petMode ? "pet\n" : "")
-                    + (state.avgUnlocked ? "avg\n" : "");
+                    + (state.avgUnlocked ? "avg\n" : "")
+                    + (state.ownerMode ? "owner\n" : "");
                 File.WriteAllText(HiddenFilePath, content);
                 File.SetAttributes(HiddenFilePath, FileAttributes.Hidden);
             }
