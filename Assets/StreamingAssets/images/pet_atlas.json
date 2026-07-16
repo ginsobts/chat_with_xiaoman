@@ -1,0 +1,28 @@
+{
+  "texture": "pet_atlas",
+  "cols": 4,
+  "rows": 3,
+  "cell": [
+    768,
+    512
+  ],
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "ppu": 100,
+  "names": [
+    "pet",
+    "pet_blink",
+    "pet_wink",
+    "pet_wave",
+    "pet_happy",
+    "pet_click",
+    "pet_drag",
+    "pet_headpat",
+    "pet_walk",
+    "pet_sleep",
+    "",
+    ""
+  ]
+}
